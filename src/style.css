@@ -1,3 +1,23 @@
 body {
     margin: 0;
 }
+
+canvas {
+    z-index: 2;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+main {
+    height: 800vh;
+}
+
+#test {
+    z-index: 5;
+    font-size: 25px;
+    background-color: wheat;
+    color: rgb(0, 0, 0);
+    position: fixed;
+    width: auto;
+}
