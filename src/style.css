@@ -10,7 +10,8 @@ canvas {
 }
 
 main {
-    height: 4000px;
+    height: 300vh;
+    background-color: pink;
 }
 
 #test {
