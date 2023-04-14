@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 
 const scene = new THREE.Scene();
 
@@ -48,6 +49,38 @@ console.log(colors[ranNum], darkColors[ranNum])
 sphere.material.color.setHex( `0x${colors[4]}` )
 box.material.color.setHex( `0x${darkColors[4]}`)
 
+// const firstNameUrl = new URL(`/src/assets/first-name.glb`, import.meta.url);
+
+const assetLoader = new GLTFLoader();
+
+// first name object
+assetLoader.load(`/src/assets/first-name.glb`, function(gltf) {
+    const model = gltf.scene;
+    scene.add(model);
+    model.position.x = -15;
+    model.scale.set(10,10,10);
+
+    model.traverse(function (child) {
+        if (child.isMesh) {
+          child.material.color.setHex( `0x${colors[4]}` )
+        }
+    });
+
+}, undefined, function(error) {
+    console.error(error)
+})
+// console.log(sphere.getObjectByName())
+
+// last name object
+assetLoader.load(`/src/assets/last-name.glb`, function(gltf) {
+    const model = gltf.scene;
+    scene.add(model);
+    model.position.z = 2;
+    model.scale.set(3,3,3);
+    model.color.setHex( `0x${colors[4]}` )
+}, undefined, function(error) {
+    console.error(error)
+})
 
 document.getElementById("test").addEventListener("click", () => {
     console.log(document.body.getBoundingClientRect().top * -0.001)
