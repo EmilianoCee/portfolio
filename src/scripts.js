@@ -5,7 +5,7 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 const scene = new THREE.Scene();
 
 const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
-camera.position.y = 1;
+camera.position.y = 0.1;
 
 // renderer
 const canvas = document.querySelector(".webgl");
@@ -50,15 +50,12 @@ scene.add( sphere );
 
 let colors = ["b7999c", "8f9e87", "638b83", "c7b57d", "b4a9c7", "e1c9b1", "7a8b99", "d6a8b6", "bfb8a5", "9b9e77"]
 let darkColors = ["4f6b65", "8d7e9e", "8C7456", "87B4C7", "B1C79F", "84948F", "99906B", "5F8A7C", "9BB6BF", "87869E"]
-let ranNum = Math.floor(Math.random() * 10)
+let ranNum = Math.floor(Math.random() * colors.length)
 console.log(colors[ranNum], darkColors[ranNum])
 sphere.material.color.setHex( `0x${colors[ranNum]}` )
 box.material.color.setHex( `0x${darkColors[ranNum]}`)
 
-// const firstNameUrl = new URL(`/src/assets/first-name.glb`, import.meta.url);
-
 const assetLoader = new GLTFLoader();
-
 // first name object
 assetLoader.load(`/src/assets/first-name.glb`, function(gltf) {
     const model = gltf.scene;
@@ -94,34 +91,53 @@ assetLoader.load(`/src/assets/last-name.glb`, function(gltf) {
     console.error(error)
 })
 
-document.getElementById("test").addEventListener("click", () => {
-    console.log(sphere.position)
-    // sphere.position.y = document.body.getBoundingClientRect().top * -0.001
+document.getElementById("hamburger-contaier").addEventListener("click", () => {
+    console.log(currNum)
 })
 
-document.addEventListener("scroll", () => {
-    if (document.body.getBoundingClientRect().top * -0.025 - 49.2 >= -0.2) {
+function scrollCheck() {
+    if (document.body.getBoundingClientRect().top * -0.025 >= 48) {
         canvas.style.display = "none"
+        // document.querySelector("#hero").style.backgroundColor = `#${colors[currNum]}`;
+        document.querySelector("#hamburger-contaier").style.display = "none";
     } else {
-        canvas.style.display = "block"
         sphere.position.y = document.body.getBoundingClientRect().top * -0.025 - 49.2
-        console.log(sphere.position.y)
-        console.log("top: " + document.body.getBoundingClientRect().top * 0.025)
+        // console.log(sphere.position.y)
+        // console.log("top: " + document.body.getBoundingClientRect().top * -0.025)
+        canvas.style.display = "block"
+        document.querySelector("#hamburger-contaier").style.display = "block";
         light.position.y = document.body.getBoundingClientRect().top * -0.025 - 49.2
     }
-})
+}
 
-document.querySelector("main").style.backgroundColor = `#${colors[ranNum]}`;
+scrollCheck();
+document.addEventListener("scroll", scrollCheck)
+
+ 
+
+let currNum = ranNum;
+function colorLerp() {
+    currNum++
+    if (currNum >= colors.length) {
+        currNum = 0;
+    }
+    let endColor = `0x${colors[currNum]}`;
+    sphere.material.color.setHex(endColor)
+}
 
 function animate() {
 	requestAnimationFrame( animate );
-
 	// sphere.rotation.x += 0.01;
 	// sphere.rotation.y += 0.01;
 
 	renderer.render( scene, camera );
 }
 animate()
+
+document.querySelector("main").style.backgroundColor = `#${darkColors[ranNum]}`;
+document.querySelector("#hero").style.backgroundColor = `#${colors[currNum]}`;
+
+// setInterval(colorLerp, 500)
 
 window.addEventListener("resize", windowResize);
 function windowResize() {
