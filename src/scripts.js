@@ -28,11 +28,26 @@ scene.add(light);
 // const lightHelper = new THREE.PointLightHelper(light);
 // scene.add(lightHelper)
 
+// backdrop 
+const backGeo = new THREE.PlaneGeometry(50, 22.5, 16, 16);
+const backMat = new THREE.MeshPhongMaterial( {
+    side: THREE.DoubleSide,
+    shininess: false,
+    wireframe: true,
+    // transparent: true,
+});
+const backdrop = new THREE.Mesh( backGeo, backMat );
+backdrop.rotation.x = Math.PI / 2;
+backdrop.position.set(-1.75, -49, -1)
+// scene.add( backdrop );
+
 // box
 const boxGeo = new THREE.BoxGeometry( 50, 55, 22.5, 2, 2, 2 );
 const boxMat = new THREE.MeshPhongMaterial( { 
     side: THREE.DoubleSide,
     shininess: false,
+    // wireframe: true,
+    // transparent: true,
 } );
 const box = new THREE.Mesh( boxGeo, boxMat );
 box.position.set(-1.75, -22.5, -1)
@@ -54,6 +69,7 @@ let ranNum = Math.floor(Math.random() * colors.length)
 console.log(colors[ranNum], darkColors[ranNum])
 sphere.material.color.setHex( `0x${colors[ranNum]}` )
 box.material.color.setHex( `0x${darkColors[ranNum]}`)
+// backdrop.material.color.setHex( `0x${darkColors[ranNum]}`)
 
 const assetLoader = new GLTFLoader();
 // first name object
