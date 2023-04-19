@@ -14,7 +14,7 @@ renderer.setSize( window.innerWidth, window.innerHeight );
 renderer.render(scene, camera);
 
 // controls
-// const controls = new OrbitControls( camera, renderer.domElement );
+const controls = new OrbitControls( camera, renderer.domElement );
 
 camera.lookAt(new THREE.Vector3(0,0,0));
 
@@ -129,8 +129,8 @@ assetLoader.load(`/src/assets/first-name.glb`, function(gltf) {
     firstName = gltf.scene.children[0];
     scene.add(firstName);
     firstName.position.set(-23.55, -51, 7.58);
+    firstName.position.y = document.body.getBoundingClientRect().top * 0.005 - 51;
     firstName.scale.set(15,15,15);
-
     firstName.traverse(function (child) {
         if (child.isMesh) {
           child.material.color.setHex( `0x${colors[ranNum]}` )
@@ -149,6 +149,7 @@ assetLoader.load(`/src/assets/last-name.glb`, function(gltf) {
     lastName = gltf.scene;
     scene.add(lastName);
     lastName.position.set(-26.5, -51, -2.5);
+    lastName.position.y = document.body.getBoundingClientRect().top * 0.005 - 51;
     lastName.scale.set(15,15,15);
 
     lastName.traverse(function (child) {
@@ -211,6 +212,7 @@ function addTorus() {
     for ( let i = 0; i < 100; i ++ ) {
         torus.position.x = Math.random() * 300 - 150;
         torus.position.y = -Math.random() * 50 - 100;
+        // torus.position.y = - 100
         torus.position.z = Math.random() * 200 - 100;
 
         torus.rotation.set(Math.random() * 2 * Math.PI, Math.random() * 2 * Math.PI, Math.random() * 2 * Math.PI)
