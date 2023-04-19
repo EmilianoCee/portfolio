@@ -14,7 +14,7 @@ renderer.setSize( window.innerWidth, window.innerHeight );
 renderer.render(scene, camera);
 
 // controls
-const controls = new OrbitControls( camera, renderer.domElement );
+// const controls = new OrbitControls( camera, renderer.domElement );
 
 camera.lookAt(new THREE.Vector3(0,0,0));
 
@@ -114,7 +114,6 @@ backdrop.material.color.setHex( `0x${darkColors[ranNum]}`);
 const sphereGeo = new THREE.SphereGeometry(1, 64, 64 );
 const sphereMat = new THREE.MeshBasicMaterial( { 
     side: THREE.DoubleSide,
-    // shininess: false,
 } );
 const sphere = new THREE.Mesh( sphereGeo, sphereMat );
 sphere.position.y = document.body.getBoundingClientRect().top * -0.025 - 49.2;
@@ -125,81 +124,102 @@ console.log(colors[ranNum], darkColors[ranNum])
 
 const assetLoader = new GLTFLoader();
 // first name object
+let firstName;
 assetLoader.load(`/src/assets/first-name.glb`, function(gltf) {
-    const model = gltf.scene;
-    scene.add(model);
-    model.position.set(-23.55, -51, 7.58);
-    model.scale.set(15,15,15);
+    firstName = gltf.scene.children[0];
+    scene.add(firstName);
+    firstName.position.set(-23.55, -51, 7.58);
+    firstName.scale.set(15,15,15);
 
-    model.traverse(function (child) {
+    firstName.traverse(function (child) {
         if (child.isMesh) {
           child.material.color.setHex( `0x${colors[ranNum]}` )
         }
     });
-
+}, function (xhr) {
+    console.log(`first name ${(xhr.loaded / xhr.total * 100)} % loaded`);
 }, undefined, function(error) {
     console.error(error)
 })
 // console.log(sphere.getObjectByName())
 
 // last name object
+let lastName;
 assetLoader.load(`/src/assets/last-name.glb`, function(gltf) {
-    const model = gltf.scene;
-    scene.add(model);
-    model.position.set(-26.5, -51, -2.5);
-    model.scale.set(15,15,15);
+    lastName = gltf.scene;
+    scene.add(lastName);
+    lastName.position.set(-26.5, -51, -2.5);
+    lastName.scale.set(15,15,15);
 
-    model.traverse(function (child) {
+    lastName.traverse(function (child) {
         if (child.isMesh) {
           child.material.color.setHex( `0x${colors[ranNum]}` )
         }
     });
 
+}, function (xhr) {
+    console.log(`last name ${(xhr.loaded / xhr.total * 100)} % loaded`);
 }, undefined, function(error) {
     console.error(error)
 })
 
 document.getElementById("hamburger-contaier").addEventListener("click", () => {
-    console.log(currNum)
+    console.log(firstName)
 })
 
 function scrollCheck() {
     if (document.body.getBoundingClientRect().top * -0.025 >= 48) {
-        canvas.style.display = "none"
-        // document.querySelector("#hero").style.backgroundColor = `#${colors[currNum]}`;
+        canvas.style.display = "none";
         document.querySelector("#hamburger-contaier").style.display = "none";
     } else {
         sphere.position.y = document.body.getBoundingClientRect().top * -0.025 - 49.2
-        // console.log(sphere.position.y)
-        // console.log("top: " + document.body.getBoundingClientRect().top * -0.025)
-        canvas.style.display = "block"
+        canvas.style.display = "block";
         document.querySelector("#hamburger-contaier").style.display = "block";
-        light.position.y = document.body.getBoundingClientRect().top * -0.025 - 49.2
+        light.position.y = document.body.getBoundingClientRect().top * -0.025 - 49.2;
 
-        cieling.position.z = document.body.getBoundingClientRect().top * 0.01 - 12.25
-        floor.position.z = document.body.getBoundingClientRect().top * -0.01 + 10.25
+        cieling.position.z = document.body.getBoundingClientRect().top * 0.015 - 12.25;
+        cieling.rotation.x = document.body.getBoundingClientRect().top * 0.0005 - Math.PI;
 
-        rightWall.position.x = document.body.getBoundingClientRect().top * -0.01 + 23.25
-        leftWall.position.x = document.body.getBoundingClientRect().top * 0.01 - 26.75
+        floor.position.z = document.body.getBoundingClientRect().top * -0.015 + 10.25;
+        floor.rotation.x = document.body.getBoundingClientRect().top * - 0.0005 - Math.PI;
 
-        backdrop.position.y = document.body.getBoundingClientRect().top * 0.005 - 50
+        rightWall.position.x = document.body.getBoundingClientRect().top * -0.015 + 23.25;
+        rightWall.rotation.y = document.body.getBoundingClientRect().top * 0.0005 + Math.PI / 2;
+
+        leftWall.position.x = document.body.getBoundingClientRect().top * 0.015 - 26.75;
+        leftWall.rotation.y = document.body.getBoundingClientRect().top * - 0.0005 + Math.PI / 2;
+
+        backdrop.position.y = document.body.getBoundingClientRect().top * 0.005 - 50;
+        if (firstName !== undefined && lastName !== undefined) {
+            firstName.position.y = document.body.getBoundingClientRect().top * 0.005 - 51;
+            lastName.position.y = document.body.getBoundingClientRect().top * 0.005 - 51;
+          } else {
+            console.log('names are undefined');
+          }
+        
     }
 }
-
 scrollCheck();
 document.addEventListener("scroll", scrollCheck)
 
- 
 
-let currNum = ranNum;
-function colorLerp() {
-    currNum++
-    if (currNum >= colors.length) {
-        currNum = 0;
+const torusGeo = new THREE.TorusGeometry();
+const torusMat = new THREE.MeshBasicMaterial();
+// const torus = new THREE.Mesh(torusGeo, torusMat);
+function addTorus() {
+    const torus = new THREE.Mesh( torusGeo, torusMat);
+    for ( let i = 0; i < 100; i ++ ) {
+        torus.position.x = Math.random() * 300 - 150;
+        torus.position.y = -Math.random() * 50 - 100;
+        torus.position.z = Math.random() * 200 - 100;
+
+        torus.rotation.set(Math.random() * 2 * Math.PI, Math.random() * 2 * Math.PI, Math.random() * 2 * Math.PI)
+        torus.material.color.setHex( `0x${colors[ranNum]}` )
+
+        scene.add( torus );
     }
-    let endColor = `0x${colors[currNum]}`;
-    sphere.material.color.setHex(endColor)
 }
+Array(250).fill().forEach(addTorus);
 
 function animate() {
 	requestAnimationFrame( animate );
@@ -212,7 +232,7 @@ function animate() {
 animate()
 
 document.querySelector("main").style.backgroundColor = `#${darkColors[ranNum]}`;
-document.querySelector("#hero").style.backgroundColor = `#${colors[currNum]}`;
+document.querySelector("#hero").style.backgroundColor = `#${colors[ranNum]}`;
 
 // setInterval(colorLerp, 500)
 
