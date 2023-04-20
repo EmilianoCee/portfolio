@@ -14,7 +14,7 @@ renderer.setSize( window.innerWidth, window.innerHeight );
 renderer.render(scene, camera);
 
 // controls
-const controls = new OrbitControls( camera, renderer.domElement );
+// const controls = new OrbitControls( camera, renderer.domElement );
 
 camera.lookAt(new THREE.Vector3(0,0,0));
 
@@ -203,7 +203,7 @@ function scrollCheck() {
 scrollCheck();
 document.addEventListener("scroll", scrollCheck)
 
-
+// random torus' in background
 const torusGeo = new THREE.TorusGeometry();
 const torusMat = new THREE.MeshBasicMaterial();
 // const torus = new THREE.Mesh(torusGeo, torusMat);
@@ -211,8 +211,8 @@ function addTorus() {
     const torus = new THREE.Mesh( torusGeo, torusMat);
     for ( let i = 0; i < 100; i ++ ) {
         torus.position.x = Math.random() * 300 - 150;
-        torus.position.y = -Math.random() * 50 - 100;
-        // torus.position.y = - 100
+        // torus.position.y = -Math.random() * 50 - 100;
+        torus.position.y = -100
         torus.position.z = Math.random() * 200 - 100;
 
         torus.rotation.set(Math.random() * 2 * Math.PI, Math.random() * 2 * Math.PI, Math.random() * 2 * Math.PI)
@@ -221,7 +221,25 @@ function addTorus() {
         scene.add( torus );
     }
 }
-Array(250).fill().forEach(addTorus);
+Array(150).fill().forEach(addTorus);
+
+// random spheres in background
+const ranSphereGeo = new THREE.SphereGeometry(.5, .5);
+const ranSphereMat = new THREE.MeshBasicMaterial();
+function addSphere() {
+    const ranSphere = new THREE.Mesh( ranSphereGeo, ranSphereMat);
+    for ( let i = 0; i < 100; i ++ ) {
+        ranSphere.position.x = Math.random() * 500 - 250;
+        // torus.position.y = -Math.random() * 50 - 100;
+        ranSphere.position.y = -150
+        ranSphere.position.z = Math.random() * 200 - 100;
+
+        // ranSphere.material.color.setHex( `0x${colors[ranNum]}` )
+
+        scene.add( ranSphere );
+    }
+}
+Array(150).fill().forEach(addSphere);
 
 function animate() {
 	requestAnimationFrame( animate );
