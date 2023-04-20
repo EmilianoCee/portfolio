@@ -114,10 +114,11 @@ backdrop.material.color.setHex( `0x${darkColors[ranNum]}`);
 const sphereGeo = new THREE.SphereGeometry(1, 64, 64 );
 const sphereMat = new THREE.MeshBasicMaterial( { 
     side: THREE.DoubleSide,
+    color: 0xFCFDB1,
 } );
 const sphere = new THREE.Mesh( sphereGeo, sphereMat );
 sphere.position.y = document.body.getBoundingClientRect().top * -0.025 - 49.2;
-sphere.material.color.setHex( `0x${colors[ranNum]}` );
+// sphere.material.color.setHex( `0x${colors[ranNum]}` );
 scene.add( sphere );
 
 console.log(colors[ranNum], darkColors[ranNum])
@@ -223,6 +224,8 @@ function addTorus() {
 }
 Array(150).fill().forEach(addTorus);
 
+
+
 // random spheres in background
 const ranSphereGeo = new THREE.SphereGeometry(.5, .5);
 const ranSphereMat = new THREE.MeshBasicMaterial();
@@ -251,8 +254,8 @@ function animate() {
 }
 animate()
 
-document.querySelector("main").style.backgroundColor = `#${darkColors[ranNum]}`;
-document.querySelector("#hero").style.backgroundColor = `#${colors[ranNum]}`;
+// document.querySelector("main").style.backgroundColor = `#${darkColors[ranNum]}`;
+// document.querySelector("#hero").style.backgroundColor = `#${colors[ranNum]}`;
 
 // setInterval(colorLerp, 500)
 

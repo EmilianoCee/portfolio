@@ -11,6 +11,7 @@ canvas {
 
 #hero {
     height: calc(100vh + 2000px);
+    background-color: #FCFDB1;
 }
 
 .hero-content {
@@ -24,6 +25,7 @@ canvas {
 
 h1 {
     font-size: 8rem;
+    color: #FFA600;
 }
 
 .hero-text {
