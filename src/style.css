@@ -9,15 +9,18 @@ body {
 
 canvas {
     z-index: 2;
-    position: fixed;
-    top: 0;
-    left: 0;
+    /* position: fixed; */
+    /* top: 0;
+    left: 0; */
+    width: 100%;
+    height: 50%;
 }
 
 #hero {
     height: 100vh;
     height: 100svh;
-    background-color: #FFCB44;
+    background: linear-gradient(180deg, #6295D9 0%, #8BA9DD 60%, #CFDCEC 90%);
+    background-color: #6295D9;
     position: relative;
 }
 
@@ -32,12 +35,13 @@ h1 {
     align-items: center;
     flex-direction: column;
     width: 100%;
-    height: 90%;
+    height: 75%;
 }
 
 .hero-nav {
     width: 100%;
     position: sticky;
+    z-index: 1;
     top: 0;
     background-color: rgba(255, 255, 255, .25);
 }
@@ -67,6 +71,10 @@ article {
     height: 200vh;
 }
 
+#index-content {
+    background: linear-gradient(180deg, #FBCC64 0%, #D7B358 2%, #B49A4C 4%, #90803F 6%, #6D6733 8%, #494E27 10%);
+    background-color: #494E27;
+}
 
 .desert-hill {
     position: absolute;

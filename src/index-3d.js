@@ -14,7 +14,7 @@ renderer.setSize( window.innerWidth, window.innerHeight );
 renderer.render(scene, camera);
 
 // controls
-// const controls = new OrbitControls( camera, renderer.domElement );
+const controls = new OrbitControls( camera, renderer.domElement );
 
 camera.lookAt(new THREE.Vector3(0,0,0));
 
@@ -165,18 +165,12 @@ assetLoader.load(`/src/assets/last-name.glb`, function(gltf) {
     console.error(error)
 })
 
-document.getElementById("hamburger-contaier").addEventListener("click", () => {
-    console.log(firstName)
-})
-
 function scrollCheck() {
     if (document.body.getBoundingClientRect().top * -0.025 >= 48) {
         canvas.style.display = "none";
-        document.querySelector("#hamburger-contaier").style.display = "none";
     } else {
         sphere.position.y = document.body.getBoundingClientRect().top * -0.025 - 49.2
         canvas.style.display = "block";
-        document.querySelector("#hamburger-contaier").style.display = "block";
         light.position.y = document.body.getBoundingClientRect().top * -0.025 - 49.2;
 
         cieling.position.z = document.body.getBoundingClientRect().top * 0.015 - 12.25;
