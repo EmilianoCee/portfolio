@@ -5,6 +5,7 @@
 
 body {
     font-family: serif;
+    overflow-x: hidden;
 }
 
 canvas {
@@ -12,8 +13,8 @@ canvas {
 }
 
 #hero {
-    height: 100vh;
-    height: 100svh;
+    height: 98vh;
+    height: 98svh;
     background: linear-gradient(180deg, #6295D9 0%, #8BA9DD 60%, #CFDCEC 90%);
     background-color: #6295D9;
     position: relative;
@@ -62,13 +63,19 @@ h1 {
     background-color: white;
 }
 
-article {
+/* article {
     height: 200vh;
-}
+} */
 
-#index-content {
+/* #index-content {
     background: linear-gradient(180deg, #FBCC64 0%, #D7B358 2%, #B49A4C 4%, #90803F 6%, #6D6733 8%, #494E27 10%);
     background-color: #494E27;
+} */
+
+.spacing {
+    height: 5vh;
+    background: linear-gradient(180deg, #FBCC64 0%, #6295D9 80%);
+    background-color: #FBCC64;
 }
 
 .desert-hill {

@@ -1,13 +1,14 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
+import * as SkeletonUtils from 'three/addons/utils/SkeletonUtils.js';
 
 const scene = new THREE.Scene();
 
 const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
 camera.position.y = 10;
 camera.position.x = 25;
-camera.position.set(15,5,15)
+camera.position.set(0,2,20)
 
 // renderer
 const canvas = document.querySelector(".webgl");
@@ -18,55 +19,73 @@ renderer.render(scene, camera);
 renderer.shadowMap.enabled = true;
 
 // controls
-const controls = new OrbitControls( camera, renderer.domElement );
+// const controls = new OrbitControls( camera, renderer.domElement );
 
-// camera.lookAt(new THREE.Vector3(0,0,0));
+camera.lookAt(new THREE.Vector3(0,0,0));
 
 // light 
 const light = new THREE.PointLight();
-light.position.set(0, 10, 10)
+light.intensity = 1.1
+light.position.set(0, 25, 10)
 light.castShadow = true;
 scene.add(light);
 
 // light helper
-const lightHelper = new THREE.PointLightHelper(light);
-scene.add(lightHelper)
-
-// let colors = ["b7999c", "8f9e87", "638b83", "c7b57d", "b4a9c7", "e1c9b1", "7a8b99", "d6a8b6", "bfb8a5", "9b9e77"]
-// let darkColors = ["4f6b65", "8d7e9e", "8C7456", "87B4C7", "B1C79F", "84948F", "99906B", "5F8A7C", "9BB6BF", "87869E"]
-// let ranNum = Math.floor(Math.random() * colors.length)
+// const lightHelper = new THREE.PointLightHelper(light);
+// scene.add(lightHelper)
 
 const assetLoader = new GLTFLoader();
 
-// box
-const boxGeo = new THREE.BoxGeometry(150,15,150);
-const boxMat = new THREE.MeshPhongMaterial( {
+const floorGeo = new THREE.PlaneGeometry(225, 225, 16, 16);
+const floorMat = new THREE.MeshPhongMaterial( {
     side: THREE.DoubleSide,
     shininess: false,
+    color: 0xFBCC64,
+});
+const floor = new THREE.Mesh(floorGeo, floorMat)
+floor.receiveShadow = true;
+floor.position.y = -1
+floor.rotation.x = Math.PI / 2;
+scene.add(floor)
+
+// box
+const boxGeo = new THREE.BoxGeometry(225, 100, 225, 16, 16, 16);
+const boxMat = new THREE.MeshBasicMaterial( {
+    side: THREE.DoubleSide,
+    shininess: false,
+    color: 0x6295D9,
 });
 const box = new THREE.Mesh(boxGeo, boxMat);
-box.receiveShadow = true;
-box.position.set(0,7.5,0)
+box.position.set(0, 48, 0)
 scene.add(box)
 
 // cactus object
 let cactus;
-let cactus2;
 assetLoader.load(`/src/assets/cactus.glb`, function(gltf) {
     cactus = gltf.scene;
     // cactus.scale.set(15,15,15);
-    scene.add(cactus);
-    
-    cactus2 = cactus.clone();
-    cactus2.position.set(10, 0, 0);
-    scene.add(cactus2);
-    
+    scene.add(cactus);    
     cactus.traverse(function (child) {
         if (child.isMesh) {
-        //   child.material.color.setHex( `0x${colors[ranNum]}` )
             child.castShadow = true;
         }
     });
+
+    for (let i = 0; i < 50; i++) {
+        const cactusClone = SkeletonUtils.clone(cactus);
+        cactusClone.position.z = Math.random() * -75 - 25;
+        cactusClone.position.x = Math.random() * -200 + 100;
+
+        cactusClone.rotation.y = Math.random() * 2 * Math.PI
+        cactusClone.castShadow = true;
+        scene.add(cactusClone)
+
+        cactusClone.traverse(function (child) {
+            if (child.isMesh) {
+                    child.castShadow = true;
+                }
+        });
+    }
 
 }, function (xhr) {
     console.log(`cactus ${(xhr.loaded / xhr.total * 100)} % loaded`);
@@ -74,34 +93,34 @@ assetLoader.load(`/src/assets/cactus.glb`, function(gltf) {
     console.error(error)
 })
 
-// random torus' in background
-// const torusGeo = new THREE.TorusGeometry();
-// const torusMat = new THREE.MeshBasicMaterial();
-// const torus = new THREE.Mesh(torusGeo, torusMat);
-// function addTorus() {
-//     // const torus = new THREE.Mesh( torusGeo, torusMat);
-//     for ( let i = 0; i < 100; i ++ ) {
-//         cactus.position.x = Math.random() * 300 - 150;
-//         // torus.position.y = -Math.random() * 50 - 100;
-//         cactus.position.y = -100
-//         cactus.position.z = Math.random() * 200 - 100;
+let mouseX = 0;
+let mouseY = 0;
+function onDocumentMouseMove( event ) {
+    mouseX = (event.clientX - window.innerWidth / 2) / 100;
+    mouseY = (event.clientY - window.innerHeight / 2) / 100;
 
-//         cactus.rotation.set(Math.random() * 2 * Math.PI, Math.random() * 2 * Math.PI, Math.random() * 2 * Math.PI)
+    
+}
 
-//         scene.add( cactus );
-//     }
-// }
-// Array(150).fill().forEach(addTorus);
+document.addEventListener('mousemove', onDocumentMouseMove);
 
+let l = 0;
 function animate() {
 	requestAnimationFrame( animate );
-	
-	// cieling.rotation.z += 0.1;
-    // cieling.position.z += -0.1;
+    
+    l = l + 0.001
+    light.position.x = Math.sin(l) * 50
+
+    camera.position.x += ( mouseX - camera.position.x ) * .01;
+    camera.position.y += ( - mouseY - camera.position.y ) * .01;
+    if (camera.position.y <= 0) {
+        camera.position.y = 0
+    }
 
 	renderer.render( scene, camera );
 }
 animate()
+
 
 window.addEventListener("resize", windowResize);
 function windowResize() {
