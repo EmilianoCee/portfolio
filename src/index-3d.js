@@ -19,7 +19,7 @@ renderer.render(scene, camera);
 renderer.shadowMap.enabled = true;
 
 // controls
-// const controls = new OrbitControls( camera, renderer.domElement );
+const controls = new OrbitControls( camera, renderer.domElement );
 
 camera.lookAt(new THREE.Vector3(0,0,0));
 
@@ -36,6 +36,7 @@ scene.add(light);
 
 const assetLoader = new GLTFLoader();
 
+// desert floor
 const floorGeo = new THREE.PlaneGeometry(250, 250, 16, 16);
 const floorMat = new THREE.MeshPhongMaterial( {
     side: THREE.DoubleSide,
@@ -47,6 +48,24 @@ floor.receiveShadow = true;
 floor.position.y = -6;
 floor.rotation.x = Math.PI / 2;
 scene.add(floor)
+
+const loader = new THREE.ImageLoader();
+
+// sign
+const boardGeo = new THREE.PlaneGeometry(10, 5, 16, 16);
+let boardImage = new THREE.TextureLoader().load(`/src/assets.cacti.jpg`) 
+const boardMat = new THREE.MeshBasicMaterial( {
+    side: THREE.DoubleSide,
+    shininess: false,
+    color: 0xFFFFFF,
+    map: boardImage,
+});
+const board = new THREE.Mesh(boardGeo, boardMat)
+// board.receiveShadow = true;
+board.castShadow = true;
+board.position.x = -15;
+board.rotation.y = Math.PI / 4;
+scene.add(board)
 
 // box
 const boxGeo = new THREE.BoxGeometry(250, 100, 250, 16, 16, 16);
@@ -71,7 +90,7 @@ assetLoader.load(`/src/assets/cactus.glb`, function(gltf) {
         }
     });
 
-    for (let i = 0; i < 150; i++) {
+    for (let i = 0; i < 200; i++) {
         const cactusClone = SkeletonUtils.clone(cactus);
         cactusClone.position.z = Math.random() * -75 - 25;
         cactusClone.position.x = Math.random() * -200 + 100;

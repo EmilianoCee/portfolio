@@ -54,18 +54,23 @@ h1 {
 }
 
 .hero-nav ul li {
-    margin: 8px;
-    padding: 8px 0;
+    /* margin: 8px; */
+    padding: 16px 0;
 }
 
 .hero-nav ul li a{
     color: #025930;
     text-decoration: none;
-    padding: 8px 16px;
+    padding:  16px;
 }
 
 .hero-nav ul li a:hover {
     background-color: white;
+    transition: 0.25s;
+}
+
+ul.subnav {
+    display: none;
 }
 
 /* article {
@@ -89,13 +94,27 @@ h1 {
     margin: 0 100px;
 }
 
-[class^="project-"] {
-    background-color: rgb(232, 140, 36, 0.25);
+.project {
+    background-color: rgb(232, 140, 36);
+    opacity: 0.25;
+
     width: 100%;
-    margin: 25px;
+    margin: 16px;
+    padding: 16px;
+
     display: flex;
     justify-content: space-between;
-    padding: 16px;
+
+    border-radius: 8px;
+
+    color: #025930;
+    text-decoration: none;
+    font-size: 1.5rem;
+}
+
+.project:hover {
+    opacity: 1;
+    transition: 0.25s;
 }
 
 .desert-hill {
