@@ -8,8 +8,13 @@ body {
     overflow-x: hidden;
 }
 
-canvas {
-    height: 50%;
+.webgl {
+    position: sticky;
+    z-index: 0;
+    top: 0;
+    /* margin-top: 103vh;
+    margin-top: 103svh;
+    height: 100%; */
 }
 
 #hero {
@@ -76,6 +81,21 @@ h1 {
     height: 5vh;
     background: linear-gradient(180deg, #FBCC64 0%, #6295D9 80%);
     background-color: #FBCC64;
+}
+
+.projects {
+    z-index: 2;
+    position: relative;
+    margin: 0 100px;
+}
+
+[class^="project-"] {
+    background-color: rgb(232, 140, 36, 0.25);
+    width: 100%;
+    margin: 25px;
+    display: flex;
+    justify-content: space-between;
+    padding: 16px;
 }
 
 .desert-hill {
