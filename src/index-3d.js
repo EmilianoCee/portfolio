@@ -163,15 +163,24 @@ function animate() {
 animate()
 
 const projectsEl = document.querySelectorAll(".project");
+const projectInfo = document.getElementById("project-info")
+
 projectsEl.forEach((element) => {
     element.addEventListener('mouseover', function() {
         boardMat.map = textures[Array.from(projectsEl).indexOf(element) + 1]
+        projectInfo.style.display = "flex";
+        projectInfo.children[0].innerText = element.children[0].innerText;
     });
-    
+
     element.addEventListener('mouseout', function() {
         boardMat.map = textures[0]
+        projectInfo.style.display = "none";
     });
 });
+
+projectInfo.addEventListener("mouseover", function() {
+    projectInfo.style.display = "flex";
+})
 
 window.addEventListener("resize", windowResize);
 function windowResize() {
