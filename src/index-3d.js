@@ -19,7 +19,7 @@ renderer.render(scene, camera);
 renderer.shadowMap.enabled = true;
 
 // controls
-const controls = new OrbitControls( camera, renderer.domElement );
+// const controls = new OrbitControls( camera, renderer.domElement );
 
 camera.lookAt(new THREE.Vector3(0,0,0));
 
@@ -36,6 +36,31 @@ scene.add(light);
 
 const assetLoader = new GLTFLoader();
 
+// var images = [];
+// function preload() {
+//     for (var i = 0; i < arguments.length; i++) {
+//         images[i] = new Image();
+//         images[i].src = preload.arguments[i];
+//     }
+// }
+
+// preload(
+//     `/src/images/cacti.jpg`,
+//     `/src/images/green-plant.jpg`
+// )
+
+const textureLoader = new THREE.TextureLoader();
+const textures = [];
+function preloadTextures() {
+    const imageNames = ["cacti.jpg", "green-plant.jpg", "cacti.png", "pricklypear.png", "cactus.jpg"];
+    
+    imageNames.forEach((imageName) => {
+      const texture = textureLoader.load(`src/images/${imageName}`);
+      textures.push(texture);
+    });
+}
+preloadTextures();
+
 // desert floor
 const floorGeo = new THREE.PlaneGeometry(250, 250, 16, 16);
 const floorMat = new THREE.MeshPhongMaterial( {
@@ -49,21 +74,19 @@ floor.position.y = -6;
 floor.rotation.x = Math.PI / 2;
 scene.add(floor)
 
-const loader = new THREE.ImageLoader();
-
 // sign
-const boardGeo = new THREE.PlaneGeometry(10, 5, 16, 16);
-let boardImage = new THREE.TextureLoader().load(`/src/assets.cacti.jpg`) 
+const boardGeo = new THREE.PlaneGeometry(18, 12, 16, 16); 
 const boardMat = new THREE.MeshBasicMaterial( {
     side: THREE.DoubleSide,
-    shininess: false,
+    // shininess: false,
     color: 0xFFFFFF,
-    map: boardImage,
+    map: textures[0],
 });
 const board = new THREE.Mesh(boardGeo, boardMat)
 // board.receiveShadow = true;
 board.castShadow = true;
 board.position.x = -15;
+board.position.z = -5;
 board.rotation.y = Math.PI / 4;
 scene.add(board)
 
@@ -139,6 +162,16 @@ function animate() {
 }
 animate()
 
+const projectsEl = document.querySelectorAll(".project");
+projectsEl.forEach((element) => {
+    element.addEventListener('mouseover', function() {
+        boardMat.map = textures[Array.from(projectsEl).indexOf(element) + 1]
+    });
+    
+    element.addEventListener('mouseout', function() {
+        boardMat.map = textures[0]
+    });
+});
 
 window.addEventListener("resize", windowResize);
 function windowResize() {

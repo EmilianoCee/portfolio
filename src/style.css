@@ -117,6 +117,18 @@ ul.subnav {
     transition: 0.25s;
 }
 
+#project-info {
+    position: absolute;
+    top: 50%; 
+    right: 25%;
+    transform: translate(50%,-50%);
+
+    width: 25%;
+    height: 75%;
+
+    border: 2px solid black
+}
+
 .desert-hill {
     position: absolute;
     bottom: 0;
