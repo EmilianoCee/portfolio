@@ -36,19 +36,6 @@ scene.add(light);
 
 const assetLoader = new GLTFLoader();
 
-// var images = [];
-// function preload() {
-//     for (var i = 0; i < arguments.length; i++) {
-//         images[i] = new Image();
-//         images[i].src = preload.arguments[i];
-//     }
-// }
-
-// preload(
-//     `/src/images/cacti.jpg`,
-//     `/src/images/green-plant.jpg`
-// )
-
 const textureLoader = new THREE.TextureLoader();
 const textures = [];
 function preloadTextures() {
@@ -85,7 +72,7 @@ const boardMat = new THREE.MeshBasicMaterial( {
 const board = new THREE.Mesh(boardGeo, boardMat)
 // board.receiveShadow = true;
 board.castShadow = true;
-board.position.x = -15;
+board.position.x = -12.5;
 board.position.z = -5;
 board.rotation.y = Math.PI / 4;
 scene.add(board)
@@ -142,8 +129,17 @@ function onDocumentMouseMove( event ) {
     mouseX = (event.clientX - window.innerWidth / 2) / 100;
     mouseY = (event.clientY - window.innerHeight / 2) / 100;
 }
-
 document.addEventListener('mousemove', onDocumentMouseMove);
+
+
+function scrollCheck() {
+    let canvDis = -window.pageYOffset + canvas.getBoundingClientRect().top;
+    let position = document.body.getBoundingClientRect().top * 0.001 + canvDis;
+    camera.position.z = position / 100;
+}
+
+// document.addEventListener("scroll", scrollCheck);
+
 
 let l = 0;
 function animate() {
@@ -188,3 +184,8 @@ function windowResize() {
     camera.updateProjectionMatrix();
     renderer.setSize(window.innerWidth, window.innerHeight);
 }
+
+document.getElementById("test").addEventListener("click", () => {
+    console.log(document.body.getBoundingClientRect().top)
+    console.log( - window.pageYOffset + canvas.getBoundingClientRect().top)
+})
