@@ -42,7 +42,7 @@ function preloadTextures() {
     const imageNames = ["cacti.jpg", "green-plant.jpg", "cacti.png", "pricklypear.png", "cactus.jpg"];
     
     imageNames.forEach((imageName) => {
-      const texture = textureLoader.load(`src/images/${imageName}`);
+      const texture = textureLoader.load(`images/${imageName}`);
       textures.push(texture);
     });
 }
@@ -89,7 +89,7 @@ scene.add(box)
 
 // cactus object
 let cactus;
-assetLoader.load(`/src/assets/cactus.glb`, function(gltf) {
+assetLoader.load(`assets/cactus.glb`, function(gltf) {
     cactus = gltf.scene;
     // cactus.scale.set(15,15,15);
     cactus.position.y = -5;
