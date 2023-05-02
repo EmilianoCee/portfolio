@@ -39,7 +39,7 @@ const assetLoader = new GLTFLoader();
 const textureLoader = new THREE.TextureLoader();
 const textures = [];
 function preloadTextures() {
-    const imageNames = ["cacti.jpg", "green-plant.jpg", "cacti.png", "pricklypear.png", "cactus.jpg"];
+    const imageNames = ["cacti.jpg", "green-plant.jpg", "cacti.PNG", "pricklypear.png", "cactus.jpg"];
     
     imageNames.forEach((imageName) => {
       const texture = textureLoader.load(`images/${imageName}`);
@@ -133,9 +133,12 @@ document.addEventListener('mousemove', onDocumentMouseMove);
 
 
 function scrollCheck() {
-    let canvDis = -window.pageYOffset + canvas.getBoundingClientRect().top;
+    let canvDis = -window.pageYOffset + canvas.getBoundingClientRect().top  
     let position = document.body.getBoundingClientRect().top * 0.001 + canvDis;
     camera.position.z = position / 100;
+    // if (document.body.getBoundingClientRect().top  < canvDis) {
+    //     console.log(000)
+    // }
 }
 
 // document.addEventListener("scroll", scrollCheck);
@@ -154,6 +157,7 @@ function animate() {
     //     camera.position.y = 0
     // }
 
+
 	renderer.render( scene, camera );
 }
 animate()
@@ -164,7 +168,7 @@ const projectInfo = document.getElementById("project-info")
 projectsEl.forEach((element) => {
     element.addEventListener('mouseover', function() {
         boardMat.map = textures[Array.from(projectsEl).indexOf(element) + 1]
-        projectInfo.style.display = "flex";
+        projectInfo.style.display = "none";
         projectInfo.children[0].innerText = element.children[0].innerText;
     });
 
@@ -175,7 +179,7 @@ projectsEl.forEach((element) => {
 });
 
 projectInfo.addEventListener("mouseover", function() {
-    projectInfo.style.display = "flex";
+    projectInfo.style.display = "none";
 })
 
 window.addEventListener("resize", windowResize);
@@ -188,4 +192,8 @@ function windowResize() {
 document.getElementById("test").addEventListener("click", () => {
     console.log(document.body.getBoundingClientRect().top)
     console.log( - window.pageYOffset + canvas.getBoundingClientRect().top)
+
+    console.log(`camera y: ${camera.position.y}`)
+    console.log(`camera x: ${camera.position.x}`)
+    console.log(`camera z: ${camera.position.z}`)
 })

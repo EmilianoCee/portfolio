@@ -1,16 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=PT+Serif&display=swap');
+
 * {
     margin: 0;
     box-sizing: border-box;
 }
 
+:root {
+    font-family: var(--sec-font, 'Montserrat', sans-serif);
+    font-family: var(--main-font, 'PT Serif', serif);
+}
+
 body {
     font-family: serif;
     overflow-x: hidden;
+    font-family: var(--sec-font);
 }
 
 .webgl {
     position: sticky;
-    z-index: 0;
+    z-index: -1;
     top: 0;
     /* margin-top: 103vh;
     margin-top: 103svh;
@@ -18,16 +26,24 @@ body {
 }
 
 #hero {
-    height: 98vh;
+    height: 99vh;
     height: 98svh;
     background: linear-gradient(180deg, #6295D9 0%, #8BA9DD 60%, #CFDCEC 90%);
     background-color: #6295D9;
     position: relative;
 }
 
+#index-content section {
+    background-color: #6295D9;
+    text-align: center;
+    font-size: 1.5rem;
+    /* background-color: #FBCC64; */
+}
+
 h1 {
     font-size: 8rem;
     color: #025930;
+    font-family: var(--main-font);
 }
 
 .hero-text {
@@ -63,7 +79,7 @@ h1 {
     list-style: none;
     display: flex;
     justify-content: center;
-    margin: 0 32px;
+    padding: 0;
 }
 
 .hero-nav ul li {
@@ -107,27 +123,23 @@ ul.subnav {
 }
 
 .project {
-    background-color: rgb(232, 140, 36);
-    opacity: 0.25;
-
-    width: 75%;
-    /* margin-right: 45%; */
-    margin: 8px;
+    width: 100%;
+    border: 8px solid rgba(0,0,0,0);
     padding: 16px;
 
-    /* grid-area: project; */
     display: flex;
     justify-content: space-between;
 
     border-radius: 8px;
 
-    color: #025930;
+    color: #ffffff;
     text-decoration: none;
-    font-size: 1.5rem;
+    font-size: 2rem;
 }
 
 .project:hover {
-    opacity: 1;
+    /* opacity: 1; */
+    border: 8px solid #FBCC64;
     transition: 0.25s;
 }
 
@@ -139,13 +151,13 @@ ul.subnav {
     z-index: 5;
     width: 100px;
     height: 50px;
-    display: none;
+    /* display: none; */
 }
 
 #project-info {
     position: absolute;
     top: 50%; 
-    right: 30%;
+    right: 50%;
     transform: translate(50%,-50%);
 
     width: 35%;
@@ -162,6 +174,7 @@ ul.subnav {
     flex-direction: column;
 
     transition: 0.25s;
+    display: none;
 }
 
 #project-info h2 {
