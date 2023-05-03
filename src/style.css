@@ -156,7 +156,7 @@ ul.subnav {
     z-index: 5;
     width: 100px;
     height: 50px;
-    display: none;
+    /* display: none; */
 }
 
 footer {

@@ -78,7 +78,7 @@ board.rotation.y = Math.PI / 4;
 scene.add(board)
 
 // box
-const boxGeo = new THREE.BoxGeometry(250, 100, 250, 16, 16, 16);
+const boxGeo = new THREE.BoxGeometry(500, 100, 250, 16, 16, 16);
 const boxMat = new THREE.MeshBasicMaterial( {
     side: THREE.DoubleSide,
     color: 0x6295D9,
@@ -127,37 +127,44 @@ assetLoader.load(`assets/cactus.glb`, function(gltf) {
 let cloud;
 assetLoader.load(`assets/low_poly_cloud.glb`, function(gltf) {
     cloud = gltf.scene;
-    cloud.scale.set(.5, .5, .5);
-    cloud.position.set(-150, 25, -150);
+    cloud.position.set(-250, 25, -175);
 
-    cloud.rotation.y = Math.PI
-    // scene.add(cloud);    
+    cloud.rotation.y = Math.PI  
     cloud.traverse(function (child) {
         if (child.isMesh) {
             child.castShadow = true;
         }
     });
-
-    const cloudClone = SkeletonUtils.clone(cloud);
-        // cloudClone.position.z = Math.random() * -75 - 25;
-        // cloudClone.position.x = Math.random() * -200 + 100;
-        // cloudClone.position.y = 15;
-    cloudClone.position.set(-125, 15, -75);
-    // scene.add(cloudClone);    
-
-    cloudClone.traverse(function (child) {
-        if (child.isMesh) {
-                child.castShadow = true;
-                child.shininess = false;
-            }
-    });
-
-
 }, function (xhr) {
     console.log(`cloud ${(xhr.loaded / xhr.total * 100)}% loaded`);
 }, undefined, function(error) {
     console.error(error)
 })
+
+class Cloud {
+    constructor(position, scale, speed) {
+        this.cloud = SkeletonUtils.clone(cloud);
+        // cloudClone.position.z = Math.random() * -75 - 25;
+        // cloudClone.position.x = Math.random() * -200 + 100;
+        // cloudClone.position.y = 15;
+        this.cloud.scale.set(...scale);
+        this.cloud.position.set(...position);
+        scene.add(this.cloud); 
+
+        this.cloud.traverse(function (child) {
+            if (child.isMesh) {
+                    child.castShadow = true;
+                    child.shininess = false;
+                }
+        });
+
+        this.speed = speed;
+    }
+
+    step() {
+        this.cloud.position.x += this.speed;
+    }
+}
 
 let mouseX = 0;
 let mouseY = 0;
@@ -179,21 +186,29 @@ function scrollCheck() {
 
 // document.addEventListener("scroll", scrollCheck);
 
+function rand(x) {
+    return Math.random() * x
+}
+
+let clouds = [];
 
 let l = 0;
 function animate() {
 	requestAnimationFrame( animate );
     
+    if (clouds.length < 20 && cloud) {
+        clouds.push(new Cloud([rand(400) - 200, 15 + rand(5), rand(300) - 300], [0.5, 0.5, 0.5], Math.random()/  50))
+    }
+
+    clouds.forEach((sub_cloud) => {
+        sub_cloud.step();
+    })
+
     l = l + 0.001
     light.position.x = Math.sin(l) * 50
 
     camera.position.x += ( mouseX - camera.position.x ) * .01;
     camera.position.y += ( - mouseY - camera.position.y ) * .01;
-    // if (camera.position.y <= 0) {
-    //     camera.position.y = 0
-    // }
-    // cloud.position.x = l - 150
-
 
 	renderer.render( scene, camera );
 }
@@ -227,10 +242,11 @@ function windowResize() {
 }
 
 document.getElementById("test").addEventListener("click", () => {
-    console.log(document.body.getBoundingClientRect().top)
-    console.log( - window.pageYOffset + canvas.getBoundingClientRect().top)
+    // console.log(document.body.getBoundingClientRect().top)
+    // console.log( - window.pageYOffset + canvas.getBoundingClientRect().top)
 
-    console.log(`camera y: ${camera.position.y}`)
-    console.log(`camera x: ${camera.position.x}`)
-    console.log(`camera z: ${camera.position.z}`)
+    console.log(2434)
+    // console.log(`camera y: ${cloud.position.y}`)
+    // console.log(`camera x: ${cloud.position.x}`)
+    // console.log(`camera z: ${cloud.position.z}`)
 })
