@@ -19,7 +19,7 @@ renderer.render(scene, camera);
 renderer.shadowMap.enabled = true;
 
 // controls
-// const controls = new OrbitControls( camera, renderer.domElement );
+const controls = new OrbitControls( camera, renderer.domElement );
 
 camera.lookAt(new THREE.Vector3(0,0,0));
 
@@ -123,6 +123,42 @@ assetLoader.load(`assets/cactus.glb`, function(gltf) {
     console.error(error)
 })
 
+// cloud object
+let cloud;
+assetLoader.load(`assets/low_poly_cloud.glb`, function(gltf) {
+    cloud = gltf.scene;
+    cloud.scale.set(.5, .5, .5);
+    cloud.position.set(-150, 25, -150);
+
+    cloud.rotation.y = Math.PI
+    // scene.add(cloud);    
+    cloud.traverse(function (child) {
+        if (child.isMesh) {
+            child.castShadow = true;
+        }
+    });
+
+    const cloudClone = SkeletonUtils.clone(cloud);
+        // cloudClone.position.z = Math.random() * -75 - 25;
+        // cloudClone.position.x = Math.random() * -200 + 100;
+        // cloudClone.position.y = 15;
+    cloudClone.position.set(-125, 15, -75);
+    // scene.add(cloudClone);    
+
+    cloudClone.traverse(function (child) {
+        if (child.isMesh) {
+                child.castShadow = true;
+                child.shininess = false;
+            }
+    });
+
+
+}, function (xhr) {
+    console.log(`cloud ${(xhr.loaded / xhr.total * 100)}% loaded`);
+}, undefined, function(error) {
+    console.error(error)
+})
+
 let mouseX = 0;
 let mouseY = 0;
 function onDocumentMouseMove( event ) {
@@ -156,6 +192,7 @@ function animate() {
     // if (camera.position.y <= 0) {
     //     camera.position.y = 0
     // }
+    // cloud.position.x = l - 150
 
 
 	renderer.render( scene, camera );

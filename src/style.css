@@ -8,12 +8,16 @@
 :root {
     font-family: var(--sec-font, 'Montserrat', sans-serif);
     font-family: var(--main-font, 'PT Serif', serif);
+
+    background-color: var(--sky, #6295D9);
+
 }
 
 body {
     font-family: serif;
     overflow-x: hidden;
     font-family: var(--sec-font);
+    background-color: var(--sky);
 }
 
 .webgl {
@@ -29,15 +33,16 @@ body {
     height: 99vh;
     height: 98svh;
     background: linear-gradient(180deg, #6295D9 0%, #8BA9DD 60%, #CFDCEC 90%);
-    background-color: #6295D9;
+    background-color: var(--sky);
     position: relative;
 }
 
 #index-content section {
-    background-color: #6295D9;
+    background-color: var(--sky);
     text-align: center;
     font-size: 1.5rem;
     /* background-color: #FBCC64; */
+    margin: 0 250px;
 }
 
 h1 {
@@ -151,7 +156,11 @@ ul.subnav {
     z-index: 5;
     width: 100px;
     height: 50px;
-    /* display: none; */
+    display: none;
+}
+
+footer {
+    margin-top: 15vh;
 }
 
 #project-info {
