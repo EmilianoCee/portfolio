@@ -22,7 +22,7 @@ body {
 
 .webgl {
     position: sticky;
-    z-index: -1;
+    /* z-index: -1; */
     top: 0;
     /* margin-top: 103vh;
     margin-top: 103svh;

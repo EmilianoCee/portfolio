@@ -47,17 +47,20 @@ function preloadTextures() {
     });
 }
 preloadTextures();
+const height = textureLoader.load(`images/height.png`)
 
 // desert floor
-const floorGeo = new THREE.PlaneGeometry(250, 250, 16, 16);
+const floorGeo = new THREE.PlaneGeometry(250, 225, 16, 16);
 const floorMat = new THREE.MeshPhongMaterial( {
     side: THREE.DoubleSide,
     shininess: false,
     color: 0xFBCC64,
+    displacementMap: height,
 });
 const floor = new THREE.Mesh(floorGeo, floorMat)
 floor.receiveShadow = true;
 floor.position.y = -6;
+floor.position.z = -100;
 floor.rotation.x = Math.PI / 2;
 scene.add(floor)
 
@@ -78,7 +81,7 @@ board.rotation.y = Math.PI / 4;
 scene.add(board)
 
 // box
-const boxGeo = new THREE.BoxGeometry(500, 100, 250, 16, 16, 16);
+const boxGeo = new THREE.BoxGeometry(500, 100, 500, 16, 16, 16);
 const boxMat = new THREE.MeshBasicMaterial( {
     side: THREE.DoubleSide,
     color: 0x6295D9,
@@ -132,7 +135,7 @@ assetLoader.load(`assets/low_poly_cloud.glb`, function(gltf) {
     cloud.rotation.y = Math.PI  
     cloud.traverse(function (child) {
         if (child.isMesh) {
-            child.castShadow = true;
+            child.castShadow = false;
         }
     });
 }, function (xhr) {
@@ -207,8 +210,8 @@ function animate() {
     l = l + 0.001
     light.position.x = Math.sin(l) * 50
 
-    camera.position.x += ( mouseX - camera.position.x ) * .01;
-    camera.position.y += ( - mouseY - camera.position.y ) * .01;
+    // camera.position.x += ( mouseX - camera.position.x ) * .01;
+    // camera.position.y += ( - mouseY - camera.position.y ) * .01;
 
 	renderer.render( scene, camera );
 }
