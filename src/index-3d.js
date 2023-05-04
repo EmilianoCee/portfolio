@@ -19,7 +19,7 @@ renderer.render(scene, camera);
 renderer.shadowMap.enabled = true;
 
 // controls
-const controls = new OrbitControls( camera, renderer.domElement );
+// const controls = new OrbitControls( camera, renderer.domElement );
 
 camera.lookAt(new THREE.Vector3(0,0,0));
 
@@ -59,7 +59,7 @@ const floorMat = new THREE.MeshPhongMaterial( {
 });
 const floor = new THREE.Mesh(floorGeo, floorMat)
 floor.receiveShadow = true;
-floor.position.y = -6;
+floor.position.y = -5.75;
 floor.position.z = -100;
 floor.rotation.x = Math.PI / 2;
 scene.add(floor)
@@ -107,7 +107,7 @@ assetLoader.load(`assets/cactus.glb`, function(gltf) {
         const cactusClone = SkeletonUtils.clone(cactus);
         cactusClone.position.z = Math.random() * -75 - 25;
         cactusClone.position.x = Math.random() * -200 + 100;
-        cactusClone.position.y = -5;
+        cactusClone.position.y = -6;
 
         cactusClone.rotation.y = Math.random() * 2 * Math.PI
         cactusClone.castShadow = true;
@@ -135,7 +135,7 @@ assetLoader.load(`assets/low_poly_cloud.glb`, function(gltf) {
     cloud.rotation.y = Math.PI  
     cloud.traverse(function (child) {
         if (child.isMesh) {
-            child.castShadow = false;
+            child.shininess = false;
         }
     });
 }, function (xhr) {
@@ -156,7 +156,6 @@ class Cloud {
 
         this.cloud.traverse(function (child) {
             if (child.isMesh) {
-                    child.castShadow = true;
                     child.shininess = false;
                 }
         });

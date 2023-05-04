@@ -1,10 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=PT+Serif&display=swap');
-
-* {
-    margin: 0;
-    box-sizing: border-box;
-}
-
 :root {
     font-family: var(--sec-font, 'Montserrat', sans-serif);
     font-family: var(--main-font, 'PT Serif', serif);
@@ -13,109 +6,26 @@
 
 }
 
-body {
-    font-family: serif;
-    overflow-x: hidden;
-    font-family: var(--sec-font);
-    background-color: var(--sky);
-}
-
 .webgl {
     position: sticky;
-    /* z-index: -1; */
+    z-index: -1;
     top: 0;
     /* margin-top: 103vh;
     margin-top: 103svh;
     height: 100%; */
 }
 
-#hero {
-    height: 99vh;
-    height: 98svh;
-    background: linear-gradient(180deg, #6295D9 0%, #8BA9DD 60%, #CFDCEC 90%);
-    background-color: var(--sky);
-    position: relative;
-}
-
 #index-content section {
-    background-color: var(--sky);
+    /* background-color: var(--sky); */
     text-align: center;
     font-size: 1.5rem;
-    /* background-color: #FBCC64; */
+    background-color: #ffffff00;
     margin: 0 250px;
-}
-
-h1 {
-    font-size: 8rem;
-    color: #025930;
-    font-family: var(--main-font);
-}
-
-.hero-text {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    width: 100%;
-    height: 75%;
-}
-
-.hero-nav {
-    width: 100%;
-    position: sticky;
-    z-index: 1;
-    top: 0;
-    background-color: rgba(255, 255, 255, .25);
-    /* display: flex;
-    justify-content: space-around; */
-}
-
-.cactus-nav {
-    height: 32px;
-    margin: 16px;
-}
-
-.cactus-nav img{
-    height: 100%;
-    width: 100%;
-}
-
-.hero-nav ul{
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    padding: 0;
-}
-
-.hero-nav ul li {
-    /* margin: 8px; */
-    padding: 16px 0;
-}
-
-.hero-nav ul li a{
-    color: #025930;
-    text-decoration: none;
-    padding:  16px;
-}
-
-.hero-nav ul li a:hover {
-    background-color: white;
-    transition: 0.25s;
-}
-
-ul.subnav {
-    display: none;
 }
 
 /* #index-content {
     height: 500vh;
 } */
-
-.spacing {
-    height: 5vh;
-    background: linear-gradient(180deg, #FBCC64 0%, #6295D9 80%);
-    background-color: #FBCC64;
-}
 
 .projects {
     z-index: 2;
@@ -125,6 +35,16 @@ ul.subnav {
     display: flex;
     justify-content: flex-end;
     flex-wrap: wrap;
+    align-items: center;
+    flex-direction: column;
+}
+
+.projects h2 {
+    text-align: center;
+    align-self: center;
+    margin: 16px;
+    color: #E78B24;
+    font-size: 3rem;
 }
 
 .project {
@@ -156,7 +76,7 @@ ul.subnav {
     z-index: 5;
     width: 100px;
     height: 50px;
-    /* display: none; */
+    display: none;
 }
 
 footer {
@@ -188,49 +108,4 @@ footer {
 
 #project-info h2 {
     font-size: 1.5rem;
-}
-
-.desert-hill {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    overflow: hidden;
-    line-height: 0;
-}
-
-.desert-hill svg {
-    position: relative;
-    display: block;
-}
-
-.hill-1 svg {
-    width: calc(143% + 1.3px);
-    height: 275px;
-}
-
-.hill-1 .shape-fill {
-    fill: #FBCC64;
-}
-
-.hill-3 svg {
-    width: calc(200% + 1.3px);
-    height: 400px;
-}
-
-.hill-3 .shape-fill {
-    fill: #E78B24;
-}
-
-.hill-2 {
-    transform: rotate(180deg);
-}
-
-.hill-2 svg {
-    width: calc(300% + 1.3px);
-    height: 550px;
-}
-
-.hill-2 .shape-fill {
-    fill: #C8721B;
 }
