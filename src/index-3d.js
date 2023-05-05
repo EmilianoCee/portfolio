@@ -39,7 +39,7 @@ const assetLoader = new GLTFLoader();
 const textureLoader = new THREE.TextureLoader();
 const textures = [];
 function preloadTextures() {
-    const imageNames = ["cacti.jpg", "green-plant.jpg", "cacti.PNG", "pricklypear.png", "cactus.jpg"];
+    const imageNames = ["cacti.jpg", "splendor.PNG", "eecu.PNG", "layout-practice.PNG", "social-engineering.PNG"];
     
     imageNames.forEach((imageName) => {
       const texture = textureLoader.load(`images/${imageName}`);
@@ -50,7 +50,7 @@ preloadTextures();
 const height = textureLoader.load(`images/height.png`)
 
 // desert floor
-const floorGeo = new THREE.PlaneGeometry(250, 225, 16, 16);
+const floorGeo = new THREE.PlaneGeometry(250, 250, 16, 16);
 const floorMat = new THREE.MeshPhongMaterial( {
     side: THREE.DoubleSide,
     shininess: false,
@@ -136,6 +136,7 @@ assetLoader.load(`assets/low_poly_cloud.glb`, function(gltf) {
     cloud.traverse(function (child) {
         if (child.isMesh) {
             child.shininess = false;
+            child.receiveShadow = false;
         }
     });
 }, function (xhr) {
@@ -199,7 +200,7 @@ function animate() {
 	requestAnimationFrame( animate );
     
     if (clouds.length < 20 && cloud) {
-        clouds.push(new Cloud([rand(400) - 200, 15 + rand(5), rand(300) - 300], [0.5, 0.5, 0.5], Math.random()/  50))
+        clouds.push(new Cloud([rand(600) - 425, 15 + rand(10), - rand(175) - 100], [0.5, 0.5, 0.5], Math.random()/  50))
     }
 
     clouds.forEach((sub_cloud) => {
@@ -209,8 +210,8 @@ function animate() {
     l = l + 0.001
     light.position.x = Math.sin(l) * 50
 
-    // camera.position.x += ( mouseX - camera.position.x ) * .01;
-    // camera.position.y += ( - mouseY - camera.position.y ) * .01;
+    camera.position.x += ( mouseX - camera.position.x ) * .005;
+    camera.position.y += ( - mouseY - camera.position.y ) * .005;
 
 	renderer.render( scene, camera );
 }
