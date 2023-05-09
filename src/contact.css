@@ -4,29 +4,29 @@
     grid-gap: 16px;
     padding: 16px;
     margin: 0 100px;
-  }
-  
-  section {
+}
+
+section {
     padding: 16px;
     border-radius: 4px;
-  }
-  
-  label {
+}
+
+label {
     display: block;
     color: #333;
     font-weight: bold;
-  }
-  
-  input[type="text"],
-  input[type="email"],
-  textarea {
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
     width: 100%;
     padding: 16px;
     border: 1px solid #FBCC64;
     border-radius: 4px;
-  }
-  
-  input[type="submit"] {
+}
+
+input[type="submit"] {
     display: block;
     width: 100%;
     padding: 16px;
@@ -36,33 +36,33 @@
     border: none;
     border-radius: 4px;
     cursor: pointer;
-  }
-  
-  input[type="submit"]:hover {
-    background-color: #f56900;
-  }
+}
 
-  input, textarea{
+input[type="submit"]:hover {
+    background-color: #f56900;
+}
+
+input, textarea{
     font-size: 1.25rem;
-  }
-  
-  .social-links a {
+}
+
+.social-links a {
     color: #ffb443;
     text-decoration: none;
     font-size: 2rem;
-  }
-  
-  .social-links a:hover {
+}
+
+.social-links a:hover {
     text-decoration: underline;
-  }
-  
-  .social-links {
+}
+
+.social-links {
     grid-column: 1 / span 2;
 
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
-  }
+}
 
 .social-links h2 {
     width: 100%;
