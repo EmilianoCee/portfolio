@@ -92,31 +92,9 @@
 
 footer {
     margin-top: 15vh;
+    
 }
 
-#project-info {
-    position: absolute;
-    top: 50%; 
-    right: 50%;
-    transform: translate(50%,-50%);
-
-    width: 35%;
-    height: 80%;
-    padding: 16px;
-
-    border: 2px solid black;
-    border-radius: 8px;
-    background-color: #E78B24;
-    color: #025930;
-
-    display: none;
-    align-items: center;
-    flex-direction: column;
-
-    transition: 0.25s;
-    display: none;
-}
-
-#project-info h2 {
-    font-size: 1.5rem;
+footer p {
+    font-size: .8rem;
 }

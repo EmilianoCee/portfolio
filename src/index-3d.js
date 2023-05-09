@@ -39,7 +39,7 @@ const assetLoader = new GLTFLoader();
 const textureLoader = new THREE.TextureLoader();
 const textures = [];
 function preloadTextures() {
-    const imageNames = ["cacti.jpg", "splendor.PNG", "eecu.PNG", "social-engineering.PNG", "layout-practice.PNG"];
+    const imageNames = ["splendor.PNG", "eecu.PNG", "social-engineering.PNG", "layout-practice.PNG"];
     
     imageNames.forEach((imageName) => {
       const texture = textureLoader.load(`images/${imageName}`);
@@ -68,12 +68,10 @@ scene.add(floor)
 const boardGeo = new THREE.PlaneGeometry(18, 12, 16, 16); 
 const boardMat = new THREE.MeshBasicMaterial( {
     side: THREE.DoubleSide,
-    // shininess: false,
     color: 0xFFFFFF,
     map: textures[0],
 });
 const board = new THREE.Mesh(boardGeo, boardMat)
-// board.receiveShadow = true;
 board.castShadow = true;
 board.position.x = -12.5;
 board.position.z = -5;
@@ -94,7 +92,6 @@ scene.add(box)
 let cactus;
 assetLoader.load(`assets/cactus.glb`, function(gltf) {
     cactus = gltf.scene;
-    // cactus.scale.set(15,15,15);
     cactus.position.y = -5;
     scene.add(cactus);    
     cactus.traverse(function (child) {
@@ -148,9 +145,6 @@ assetLoader.load(`assets/low_poly_cloud.glb`, function(gltf) {
 class Cloud {
     constructor(position, scale, speed) {
         this.cloud = SkeletonUtils.clone(cloud);
-        // cloudClone.position.z = Math.random() * -75 - 25;
-        // cloudClone.position.x = Math.random() * -200 + 100;
-        // cloudClone.position.y = 15;
         this.cloud.scale.set(...scale);
         this.cloud.position.set(...position);
         scene.add(this.cloud); 
@@ -176,18 +170,6 @@ function onDocumentMouseMove( event ) {
     mouseY = (event.clientY - window.innerHeight / 2) / 100;
 }
 document.addEventListener('mousemove', onDocumentMouseMove);
-
-
-function scrollCheck() {
-    let canvDis = -window.pageYOffset + canvas.getBoundingClientRect().top  
-    let position = document.body.getBoundingClientRect().top * 0.001 + canvDis;
-    camera.position.z = position / 100;
-    // if (document.body.getBoundingClientRect().top  < canvDis) {
-    //     console.log(000)
-    // }
-}
-
-// document.addEventListener("scroll", scrollCheck);
 
 function rand(x) {
     return Math.random() * x
@@ -217,25 +199,33 @@ function animate() {
 }
 animate()
 
+let currentIndex = 0;
+function updateTexture() {
+    boardMat.map = textures[currentIndex];
+    boardMat.needsUpdate = true;
+}
+
+function changeImage() {
+    currentIndex = (currentIndex + 1) % textures.length;
+    updateTexture();
+}
+
+let intervalID = setInterval(changeImage, 2000);
+
 const projectsEl = document.querySelectorAll(".project");
-const projectInfo = document.getElementById("project-info")
 
 projectsEl.forEach((element) => {
     element.addEventListener('mouseover', function() {
-        boardMat.map = textures[Array.from(projectsEl).indexOf(element) + 1]
-        projectInfo.style.display = "none";
-        projectInfo.children[0].innerText = element.children[0].innerText;
+        boardMat.map = textures[Array.from(projectsEl).indexOf(element)]
+        console.log(23)
+        clearInterval(intervalID)
     });
 
     element.addEventListener('mouseout', function() {
         boardMat.map = textures[0]
-        projectInfo.style.display = "none";
+        setInterval(changeImage, 2000)
     });
 });
-
-projectInfo.addEventListener("mouseover", function() {
-    projectInfo.style.display = "none";
-})
 
 window.addEventListener("resize", windowResize);
 function windowResize() {
@@ -243,13 +233,3 @@ function windowResize() {
     camera.updateProjectionMatrix();
     renderer.setSize(window.innerWidth, window.innerHeight);
 }
-
-document.getElementById("test").addEventListener("click", () => {
-    // console.log(document.body.getBoundingClientRect().top)
-    // console.log( - window.pageYOffset + canvas.getBoundingClientRect().top)
-
-    console.log(2434)
-    // console.log(`camera y: ${cloud.position.y}`)
-    // console.log(`camera x: ${cloud.position.x}`)
-    // console.log(`camera z: ${cloud.position.z}`)
-})
