@@ -217,14 +217,9 @@ const projectsEl = document.querySelectorAll(".project");
 projectsEl.forEach((element) => {
     element.addEventListener('mouseover', function() {
         boardMat.map = textures[Array.from(projectsEl).indexOf(element)]
-        console.log(23)
         clearInterval(intervalID)
     });
 
-    element.addEventListener('mouseout', function() {
-        boardMat.map = textures[0]
-        setInterval(changeImage, 2000)
-    });
 });
 
 window.addEventListener("resize", windowResize);
