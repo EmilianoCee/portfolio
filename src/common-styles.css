@@ -220,6 +220,10 @@ ul.subnav {
     height: 100%;
 }
 
+footer {
+    font-size: 1rem;
+}
+
 .desert-hill {
     position: absolute;
     bottom: 0;
