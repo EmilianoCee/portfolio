@@ -211,13 +211,23 @@ ul.subnav {
     justify-self: center;
 }
 
-/* .image-half {
-    border: 2px solid #E78B24;
-} */
+.half-split a {
+    color: #ffb443;
+    text-decoration: none;
+    font-size: 1.25rem;
+}
+
+.half-split a:hover {
+    text-decoration: underline;
+}
 
 .half-split img {
     width: 100%;
     height: 100%;
+}
+
+.double-image {
+    display: flex;
 }
 
 footer {
