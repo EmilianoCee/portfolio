@@ -39,7 +39,7 @@ const assetLoader = new GLTFLoader();
 const textureLoader = new THREE.TextureLoader();
 const textures = [];
 function preloadTextures() {
-    const imageNames = ["cacti.jpg", "splendor.PNG", "eecu.PNG", "layout-practice.PNG", "social-engineering.PNG"];
+    const imageNames = ["cacti.jpg", "splendor.PNG", "eecu.PNG", "social-engineering.PNG", "layout-practice.PNG"];
     
     imageNames.forEach((imageName) => {
       const texture = textureLoader.load(`images/${imageName}`);

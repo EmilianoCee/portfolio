@@ -47,6 +47,7 @@ h2 {
     font-size: 3rem;
 
     /* width: 100%; */
+    grid-column: 1 / span 2;
 }
 
 h3 {
@@ -60,6 +61,7 @@ h4 {
 p {
     color: white;
     text-shadow: 1.5px 1.5px rgba(0,0,0,0.75);
+    font-size: 1.25rem
 }
 
 .hero-text * {
@@ -70,7 +72,7 @@ p {
 
 .hero-text .loaded {
     position: relative;
-    bottom: 10%;
+    bottom: 0;
 }
 
 .hero-text {
@@ -182,18 +184,36 @@ ul.subnav {
     margin: 10vh 250px;
 } */
 
-/* article section {
-    display: flex;
+.grid-content {
+    margin: 0 100px;
+}
+
+.grid-content section {
+    display: grid;
     justify-content: center;
-    width: 100%;
-    flex-direction: column;
-    flex-wrap: wrap;
+    grid-template-columns: repeat(2, 1fr);
+
+    margin: 50px 0;
     gap: 16px;
-} */
+}
+
+.grid-content section div {
+    padding: 16px;
+}
+
+#about-content .about {
+    display: block;
+    text-align: center;
+}
 
 .half-split {
-    width: 45%;
+    width: 75%;
+    justify-self: center;
 }
+
+/* .image-half {
+    border: 2px solid #E78B24;
+} */
 
 .half-split img {
     width: 100%;
