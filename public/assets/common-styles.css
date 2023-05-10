@@ -234,6 +234,66 @@ footer {
     font-size: 1rem;
 }
 
+.solar {
+    position: absolute;
+    top: 25%;
+    right: 10%;
+}
+
+#sun {
+    width: 7.5vh;
+    height: 7.5vh;
+    
+    box-shadow: orange 0px 0px 15px 15px;
+    border-radius: 50%;
+
+    background-color: yellow;
+    background: radial-gradient(rgb(255, 255, 0), rgb(255, 165, 0));
+    transition: 0.25s;
+
+    /* display: none; */
+}
+
+#sun:hover {
+    transform: scale(1.1);
+    box-shadow: orange 0px 0px 20px 20px;
+
+}
+
+#moon {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-color: #F5F5F5;
+    position: relative;
+    overflow: hidden;
+    display: none;
+}
+
+#moon::before {
+    content: "";
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    width: 50%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: #6295D9;
+}
+  
+/*   
+  #sun::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    box-shadow: rgb(255, 111, 0) 0px 0px 25px 25px;
+    border-radius: 50%;
+  }
+   */
+
 .desert-hill {
     position: absolute;
     bottom: 0;
