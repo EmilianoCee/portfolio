@@ -7,33 +7,32 @@
 }
 
 .webgl {
-    position: fixed;
+    position: sticky;
     z-index: -1;
     top: 0;
-    /* margin-top: 103vh;
-    margin-top: 103svh; */
-    height: 1vh;
+    height: 100vh;
 }
 
 #index-content {
     margin: 0;
 }
 
+#index-content section p {
+    font-size: 1.5rem;
+}
+
 #index-content section {
     /* background-color: var(--sky); */
     text-align: center;
     font-size: 1.5rem;
-    background-color: #ffffff00;
-    /* margin: 10vh 250px; */
+    background-color: rgba(0, 0, 0, 0);
 }
 
-.index-section a{
+.index-section a {
     text-shadow: 1.5px 1.5px rgba(0,0,0,0.75);
-    padding: .5rem 1rem;
+    padding: .5rem;
     color: #ffffff;
     font-size: 1.5rem;
-
-    /* text-decoration: none; */
 }
 
 .index-section a:hover {
@@ -43,7 +42,6 @@
 
 .index-section {
     padding: 16px;
-    line-height: 4rem;
 }
 
 .projects {

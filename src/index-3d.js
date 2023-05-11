@@ -6,8 +6,6 @@ import * as SkeletonUtils from 'three/addons/utils/SkeletonUtils.js';
 const scene = new THREE.Scene();
 
 const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
-// camera.position.y = 10;
-// camera.position.x = 25;
 camera.position.set(0,2,20)
 
 // renderer
@@ -59,7 +57,7 @@ const floorMat = new THREE.MeshPhongMaterial( {
 });
 const floor = new THREE.Mesh(floorGeo, floorMat)
 floor.receiveShadow = true;
-floor.position.y = -5.75;
+floor.position.y = -6.75;
 floor.position.z = -100;
 floor.rotation.x = Math.PI / 2;
 scene.add(floor)
@@ -73,9 +71,9 @@ const boardMat = new THREE.MeshBasicMaterial( {
 });
 const board = new THREE.Mesh(boardGeo, boardMat)
 board.castShadow = true;
-board.position.x = -12.5;
-board.position.z = -5;
+board.position.set(-12.5, -1, -5)
 board.rotation.y = Math.PI / 4;
+board.rotation.z = -0.0075;
 scene.add(board)
 
 // box
@@ -85,14 +83,14 @@ const boxMat = new THREE.MeshBasicMaterial( {
     color: 0x6295D9,
 });
 const box = new THREE.Mesh(boxGeo, boxMat);
-box.position.set(0, 42, 0)
+box.position.set(0, 41, 0)
 scene.add(box)
 
 // cactus object
 let cactus;
 assetLoader.load(`assets/cactus.glb`, function(gltf) {
     cactus = gltf.scene;
-    cactus.position.y = -5;
+    cactus.position.y = -6;
     scene.add(cactus);    
     cactus.traverse(function (child) {
         if (child.isMesh) {
@@ -104,7 +102,7 @@ assetLoader.load(`assets/cactus.glb`, function(gltf) {
         const cactusClone = SkeletonUtils.clone(cactus);
         cactusClone.position.z = Math.random() * -75 - 25;
         cactusClone.position.x = Math.random() * -200 + 100;
-        cactusClone.position.y = -6;
+        cactusClone.position.y = -7;
 
         cactusClone.rotation.y = Math.random() * 2 * Math.PI
         cactusClone.castShadow = true;

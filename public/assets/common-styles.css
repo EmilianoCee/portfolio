@@ -236,7 +236,7 @@ footer {
 
 .solar {
     position: absolute;
-    top: 25%;
+    top: 15%;
     right: 10%;
 }
 
@@ -257,7 +257,6 @@ footer {
 #sun:hover {
     transform: scale(1.1);
     box-shadow: orange 0px 0px 20px 20px;
-
 }
 
 #moon {
