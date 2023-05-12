@@ -387,10 +387,18 @@ footer {
 
 @media screen and (max-width: 600px) {
     h1 {
-        font-size: 2rem;
+        font-size: 4rem;
     }
 
     h2 {
-        font-size: 1.5rem;
+        font-size: 2rem;
+    }
+
+    .hero-nav ul li a {
+        padding: 8px;
+    }
+
+    .hero-nav ul li {
+        padding: 8px 0;
     }
 } 

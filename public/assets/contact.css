@@ -15,6 +15,7 @@ label {
     display: block;
     color: #333;
     font-weight: bold;
+    font-style: var(--sec-font);
 }
 
 input[type="text"],
@@ -44,6 +45,7 @@ input[type="submit"]:hover {
 
 input, textarea{
     font-size: 1.25rem;
+    font-style: var(--sec-font);
 }
 
 .social-links a {
