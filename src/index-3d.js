@@ -225,4 +225,31 @@ function windowResize() {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
     renderer.setSize(window.innerWidth, window.innerHeight);
+
+    if (window.innerWidth < 750) {
+        board.position.set(0, -1, -4);
+        board.rotation.y = 0;
+
+        cactus.position.set(0, -6.5, 2.5);
+        cactus.rotation.y = 0;
+        cactus.scale.set(0.5, 0.5, 0.5);
+    } else if (window.innerWidth < 1000 ) {
+        board.position.set(-5, -1, -2.5);
+        board.rotation.y = Math.PI / 6;
+
+        cactus.position.set(7.5, -6, 0);
+        cactus.rotation.y = 5 * Math.PI / 6;
+        cactus.scale.set(1, 1, 1);
+    } else {
+        board.position.set(-12.5, -1, -5);
+        board.rotation.y = Math.PI / 4;
+
+        cactus.position.set(0, -6, 0);
+        cactus.rotation.y = 0;
+        cactus.scale.set(1, 1, 1);
+    }
+}
+
+if (cactus != undefined) {
+    windowResize();
 }

@@ -96,3 +96,9 @@ footer {
 footer p {
     font-size: .8rem;
 }
+
+@media screen and (max-width: 850px) {
+    .projects {
+        margin: 0 25px;
+    }
+}
