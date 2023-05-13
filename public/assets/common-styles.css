@@ -204,10 +204,6 @@ ul.subnav {
     text-decoration: underline;
 }
 
-footer {
-    font-size: 1rem;
-}
-
 .solar {
     position: absolute;
     top: 15%;
@@ -266,6 +262,46 @@ footer {
     border-radius: 50%;
   }
    */
+
+   footer {
+    background: linear-gradient(180deg, #6295D9 0%, #8BA9DD 75%, #CFDCEC 100%);
+    background-color: #ffa42c;
+    text-align: center;
+    width: 100%;
+    padding: 16px 32px;
+
+    margin-top: 10vh;
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.footer-nav {
+    padding: 8px;
+}
+
+.footer-nav li {
+    display: inline-block;
+    margin: 8px;
+}
+
+.footer-nav a {
+    color: #ebebeb;
+    text-decoration: none;
+}
+
+.footer-nav a:hover {
+    color: #444;
+    text-decoration: underline;
+}
+
+.cite {
+    margin: 16px;
+}
 
 .desert-hill {
     position: absolute;

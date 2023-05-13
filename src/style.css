@@ -88,13 +88,24 @@
     display: none;
 }
 
-footer {
-    margin-top: 15vh;
-    
+#index-content footer {
+    background: none;
 }
 
-footer p {
-    font-size: .8rem;
+#index-content footer p{
+    color: black;
+    text-shadow: 1.5px 1.5px rgba(255, 255, 255, 0.75);
+}
+
+#index-content footer a{
+    color: black;
+    text-shadow: 1.5px 1.5px rgba(255, 255, 255, 0.75);
+}
+
+#index-content footer a:hover{
+    color: rgb(255, 255, 255);
+    text-shadow: 1.5px 1.5px rgba(0,0,0,0.75);
+
 }
 
 @media screen and (max-width: 850px) {
