@@ -1,7 +1,7 @@
 .grid-content {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-gap: 32px;
+    gap: 32px;
     margin: 32px;
 }
 
@@ -18,7 +18,7 @@
     background-color: #007BFF;
     color: #FFFFFF;
     text-decoration: none;
-    border-radius: 4px;
+    border-radius: 8px;
     font-weight: bold;
 
     text-align: center;
@@ -36,7 +36,15 @@
 .half-split img {
     max-width: 100%;
     height: auto;
-    border-radius: 4px;
+    border-radius: 8px;
+}
+
+.half-split.double-image {
+    flex-direction: row;
+}
+
+.double-image img {
+    max-width: 50%;
 }
 
 .project-hero {
@@ -47,6 +55,8 @@
 
     background-size: cover;
     background-repeat: no-repeat;
+
+    border-bottom: 4px solid #025930;
 }
 
 .project-title {
@@ -57,6 +67,7 @@
     padding: 8px 16px;
     margin: 10%;
     height: fit-content;
+    border-radius: 8px;
 
     background-color: rgba(255, 255, 255, .75);
 }
@@ -65,6 +76,19 @@ article {
     margin-bottom: 15vh;
 }
 
+.spacing#to-splendor {
+    background: linear-gradient(180deg, #FBCC64 0%, rgb(30, 36, 48) 80%);
+}
+
+.spacing#to-writing {
+    background: linear-gradient(180deg, #FBCC64 0%, rgb(255, 255, 255) 80%);
+}
+
+.spacing#to-league {
+    background: linear-gradient(180deg, #FBCC64 0%, rgb(1, 10, 19) 80%);
+}
+
+/* programming projects */
 #digital-game .project-hero {
     background-image: url(/images/splendor.PNG);
 }
@@ -79,4 +103,22 @@ article {
 
 #layout-practice .project-hero {
     background-image: url(/images/layout-practice.PNG);
+}
+
+/* english projects */
+#career-choice .project-hero {
+    background-image: url(/images/careerchoiceimage.PNG);
+    background-position: 15%;
+    background-repeat: repeat;
+}
+
+#cover-letter .project-hero {
+    background-image: url(/images/coverletterimage.PNG);
+    background-position: 16px;
+    background-repeat: repeat;
+}
+
+/* personal projects */
+#league .project-hero {
+    background-image: url(/images/league-hero.PNG);
 }
