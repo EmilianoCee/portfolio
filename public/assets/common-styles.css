@@ -180,35 +180,22 @@ ul.subnav {
     background-color: #FBCC64;
 }
 
+.spacing#to-splendor {
+    background: linear-gradient(180deg, #FBCC64 0%, rgb(30, 36, 48) 80%);
+}
+
 /* article {
     margin: 10vh 250px;
 } */
 
-.grid-content {
-    margin: 0 100px;
-}
 
-.grid-content section {
-    display: grid;
-    justify-content: center;
-    grid-template-columns: repeat(2, 1fr);
-
-    margin: 50px 0;
-    gap: 16px;
-}
-
-.grid-content section div {
+/* .grid-content section div {
     padding: 16px;
-}
+} */
 
 #about-content .about {
     display: block;
     text-align: center;
-}
-
-.half-split {
-    width: 75%;
-    justify-self: center;
 }
 
 .half-split a {
@@ -228,18 +215,6 @@ ul.subnav {
 
 .double-image {
     display: flex;
-}
-
-#digital-game .project-hero {
-    width: 100%;
-    height: 75vh;
-
-    background-image: url(/images/splendor.PNG);
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-
-    /* background-color: slategrey; */
 }
 
 footer {
@@ -348,6 +323,25 @@ footer {
 
 .hill-2 .shape-fill {
     fill: #C8721B;
+}
+
+.hill-spacing {
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.hill-spacing svg {
+    position: relative;
+    display: block;
+    width: calc(230% + 1.3px);
+    height: 150px;
+    transform: rotateY(180deg);
+}
+
+.hill-spacing .shape-fill {
+    fill: #FBCC64;
 }
 
 
