@@ -1,0 +1,46 @@
+.grid-content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    margin: 32px;
+}
+
+.column h2 {
+    height: 100px;
+    margin-bottom: 16px;
+}
+
+.column a {
+    display: inline-block;
+    width: 45%;
+    padding: 8px 16px;
+    margin-top: 16px;
+    background-color: #007BFF;
+    color: #FFFFFF;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+
+    text-align: center;
+}
+
+.column a:hover {
+    background-color: #0056b3;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .column div {
+    margin-bottom: 16px;
+  }
+  
+  .column img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
