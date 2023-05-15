@@ -432,12 +432,6 @@ ul.subnav {
     }
 }
 
-@media screen and (max-width: 500px) {
-    h1 {
-        font-size: 3.5rem;
-    }
-}
-
 @media screen and (max-width: 600px) {
     h1 {
         font-size: 4.20rem;
@@ -454,7 +448,23 @@ ul.subnav {
     .hero-nav ul li {
         padding: 8px 0;
     }
+
+    .grid-split {
+        margin: 16px;
+        gap: 16px;
+    }
+
+    .grid-content {
+        margin: 16px;
+        gap: 16px;
+    }
 } 
+
+@media screen and (max-width: 500px) {
+    h1 {
+        font-size: 3rem;
+    }
+}
 
 /* max-height media screens */
 

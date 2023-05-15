@@ -1,6 +1,6 @@
 section {
     padding: 16px;
-    border-radius: 4px;
+    border-radius: 8px;
 }
 
 label {
@@ -16,7 +16,7 @@ textarea {
     width: 100%;
     padding: 16px;
     border: 1px solid #FBCC64;
-    border-radius: 4px;
+    border-radius: 8px;
 }
 
 input[type="submit"] {
@@ -25,9 +25,10 @@ input[type="submit"] {
     padding: 16px;
     margin-top: 16px;
     background-color: #ff8c00;
-    color: #fff;
+    color: white;
+
     border: none;
-    border-radius: 4px;
+    border-radius: 8px;
     cursor: pointer;
 }
 
