@@ -218,6 +218,9 @@ projectsEl.forEach((element) => {
         clearInterval(intervalID)
     });
 
+    element.addEventListener('mouseout', function() {
+        boardMat.map = textures[Math.floor(Math.random() * 4)]
+    });
 });
 
 window.addEventListener("resize", windowResize);

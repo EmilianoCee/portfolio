@@ -54,8 +54,10 @@
 
     background-size: cover;
     background-repeat: no-repeat;
+    background-position: top center;
 
     border-bottom: 4px solid #025930;
+    
 }
 
 .project-title {
@@ -76,7 +78,7 @@ article {
 }
 
 .spacing#to-splendor {
-    background: linear-gradient(180deg, #FBCC64 0%, rgb(30, 36, 48) 80%);
+    background: linear-gradient(180deg, #FBCC64 0%, rgb(36, 40, 48) 80%);
 }
 
 .spacing#to-writing {
@@ -120,4 +122,46 @@ article {
 /* personal projects */
 #league .project-hero {
     background-image: url(/images/league-hero.PNG);
+}
+
+#wave-calc .project-hero {
+    background-image: url(/images/calc.jpg);
+    background-size:auto;
+    background-repeat: repeat;
+}
+
+@media screen and (max-width: 1200px) {
+    .half-split img {
+        width: 100%;
+    }
+}
+
+
+
+@media screen and (max-width: 1000px) {
+    .grid-content {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    article {
+        margin-bottom: 10vh;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .grid-content {
+        gap: 16px;
+        margin: 16px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .grid-content {
+        gap: 8px;
+        margin: 8px;
+    }
+
+    .half-split a {
+        padding: 6px 6px;
+    }
 }
