@@ -180,13 +180,25 @@ ul.subnav {
     background-color: #FBCC64;
 }
 
-/* article {
-    margin: 10vh 250px;
-} */
 
 #about-content .about {
     display: block;
     text-align: center;
+}
+
+#resume-content section{
+    padding: 8px;
+    border-radius: 8px;
+
+    background-color: rgba(139, 169, 221, 0.5);
+
+    display: flex;
+    flex-direction: column;
+}
+
+#resume-content embed {
+    width: 100%;
+    height: 100%;
 }
 
 .grid-content {
