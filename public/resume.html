@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Emiliano - Resume</title>
     <link rel="stylesheet" href="/assets/common-styles.css">
-    <link rel="stylesheet" href="/assets/resume-styles.css">
 
     <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
@@ -16,9 +15,6 @@
         <nav class="hero-nav">
             <ul>
                 <li><a href="/index.html">Home</a></li>
-                <li>
-                    <a href="/about.html">About me</a>
-                </li>
                 <li>
                     <a href="/portfolio/index.html">Projects</a>
                 </li>
@@ -66,74 +62,63 @@
             <div class="resume">
                 <h3>Emiliano Cereceres</h3>
                 <h4>Contact Information</h4>
-                <p>Email: 3cereceres@gmail.com</p>
-                <p>Clovis, CA 92612</p>
+                <p>Berkeley, CA</p>
 
                 <h3>Education</h3>
-                <h4>Clovis City College: Dual Enrollment</h4>
+                <h4>University of California, Berkeley (Aug. 2024-May 2028 expected)</h4>
                 <ul>
-                    <li>IS 40A and IS 40B (2022-present)</li>
-                    <li>Web Development with HTML, CSS, and JavaScript</li>
-                    <li>Advanced Web Design Concepts, Designs, and Programming</li>
+                    <li>B.S. Electrical Engineering and Computer Sciences</li>
+                    <li>Relevant coursework: Computer Architecture (CS61C), Circuits and Systems (EECS16B), Data Structures and Algorithms (CS61B)</li>
+                    <li>In progress (Fall 2026): Microelectronic Devices and Circuits (EE105), including Cadence and SPICE</li>
+                    <li>In progress (Fall 2026): Signals and Systems (EE120)</li>
+                    <li>In progress (Fall 2026): Hands-On PCB Engineering (HOPE)</li>
                 </ul>
 
-                <h4>Center for Advanced Research and Technology</h4>
+                <h3>Projects</h3>
+                <h4>Pipelined RISC-V CPU (Spring 2026)</h4>
                 <ul>
-                    <li>Web Application Development Lab (Aug. 2022-present)</li>
-                    <li>Collaborated professionally with team members to develop websites</li>
-                    <li>Developed promotional website for fictional home builder company</li>
-                    <li>Project manager with multiple developers to create an informative website</li>
-                    <li>Produced and presented formal PowerPoint presentations</li>
-                    <li>Experience in HTML and CSS</li>
+                    <li>Built a multi-stage pipelined CPU in Logisim that runs RISC-V instructions</li>
+                    <li>Designed the ALU, register file, branch comparator, and datapath, then put them together into a working pipeline</li>
+                    <li>Worked through timing and hazard issues between pipeline stages to keep the datapath correct</li>
                 </ul>
 
-                <h4>Edison High School</h4>
+                <h4>Guitar Amplifier and Effects Chain (Fall 2025)</h4>
                 <ul>
-                    <li>Taking college preparatory and Advanced Placement classes</li>
-                    <li>AP Computer Science Principles, AP Human Geography, AP World History, AP Calculus AB</li>
-                    <li>Basic JavaScript learned in AP Computer Science Principles</li>
-                    <li>Augmented GPA 4.32</li>
-                    <li>GPA 4.0</li>
+                    <li>Built a full analog signal chain from guitar to speaker, testing and fixing each stage on the bench along the way</li>
+                    <li>Built the volume and tone controls, a treble boost pedal, and a power amp, all using op-amps</li>
+                    <li>Used KVL/KCL and filter design to figure out what was wrong when a stage wasn't behaving, then checked it with lab equipment</li>
                 </ul>
 
-                <h3>Work Experience</h3>
-                <h4>WorkED (Jun. 2022-Jul. 2022)</h4>
+                <h3>Experience</h3>
+                <h4>iOS Developer, MyShake - UC Berkeley Seismology Lab (Jan. 2025-present)</h4>
                 <ul>
-                    <li>Cybersecurity</li>
-                    <li>Machine Learning / Artificial Intelligence</li>
-                    <li>Week-long courses</li>
-                    <li>Collaborated in small groups with team members</li>
-                    <li>Lectures on new topics</li>
+                    <li>Build features in Swift and SwiftUI for MyShake, a production earthquake early warning app</li>
+                    <li>Fixed a map performance problem: the app was recalculating the whole viewport up to 240 times per pan, added debouncing to cut that to once per pan, dropped update frequency from 60-120Hz to 10Hz</li>
+                    <li>Set up earthquake alerts using Apple's push notification service: a silent push wakes the app, pulls the event from the API, and the app decides whether to alert based on the user's saved location</li>
+                    <li>Built the map view in MapKit that shows live USGS earthquakes with shaking-intensity overlays</li>
                 </ul>
 
-                <h4>Keiser Corporation Intership (Apr. 2023)</h4>
+                <h4>Web Development Intern, Keiser Corporation (Mar. 2022)</h4>
                 <ul>
-                    <li>Week long internship</li>
-                    <li>Worked on employee intranet</li>
-                    <li>Worked with WordPress</li>
-                    <li>Professional environment</li>
+                    <li>Found and fixed bugs in the PHP backend and frontend of a WordPress-based intranet site</li>
                 </ul>
 
-                <h3>Certificates, Awards</h3>
+                <h3>Leadership &amp; Activities</h3>
+                <h4>Project Lead - Website Redesign, Codify at UC Berkeley (Fall 2026-present)</h4>
                 <ul>
-                    <li>Honer Roll</li>
-                    <li>College Board Certificate: Passing AP Exams</li>
+                    <li>Leading the redesign of the club's website, taking artistic freedom</li>
+                    <li>Member since Fall 2024; started in the club's education program, then worked as a developer for MyShake</li>
                 </ul>
 
-                <h3>Extracurricular Activities</h3>
+                <h3>Skills</h3>
                 <ul>
-                    <li>President of ClubRed Robotics (2022-present)</li>
-                    <li>Symphonic Orchestra (2016-2021)</li>
+                    <li>Programming: Swift, C, C++, Python, Java, TypeScript, JavaScript, Git</li>
                 </ul>
             </div>
-            
-            <a target="_blank" rel="noopener noreferrer" href="/public/assets/emiliano cereceres - Resume.pdf"> View PDF</a>
+
+            <a target="_blank" rel="noopener noreferrer" href="/assets/EmilianoCereceres_Resume.pdf">View PDF</a>
         </section>
 
-        <section>
-            <h2>Letter of Recommendation</h2>
-            <embed src="/assets/EmilianoC.pdf" type="application/pdf">
-        </section>
     </article>
 
     <footer>
@@ -141,7 +126,6 @@
             <p>© 2023 Emiliano Cereceres. All rights reserved.</p>
             <ul class="footer-nav">
                 <li><a href="/index.html">Home</a></li>
-                <li><a href="/about.html">About</a></li>
                 <li><a href="/portfolio/index.html">Projects</a></li>
                 <li><a href="/resume.html">Resume</a></li>
                 <li><a href="/contact.html">Contact</a></li>

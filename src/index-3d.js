@@ -23,7 +23,10 @@ camera.lookAt(new THREE.Vector3(0,0,0));
 
 // light 
 const light = new THREE.PointLight();
-light.intensity = 1.1
+// three r155 switched lights to physical units; the Math.PI factor and decay = 0
+// reproduce the pre-r155 (useLegacyLights) brightness this scene was built against.
+light.intensity = 1.1 * Math.PI;
+light.decay = 0;
 light.position.set(0, 20, 10)
 light.castShadow = true;
 scene.add(light);
@@ -41,6 +44,7 @@ function preloadTextures() {
     
     imageNames.forEach((imageName) => {
       const texture = textureLoader.load(`images/${imageName}`);
+      texture.colorSpace = THREE.SRGBColorSpace;
       textures.push(texture);
     });
 }
