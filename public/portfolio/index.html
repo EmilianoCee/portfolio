@@ -4,10 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Emiliano - Portfolio</title>
+    <title>Emiliano - Projects</title>
     <link rel="stylesheet" href="/assets/common-styles.css">
     <link rel="stylesheet" href="/assets/portfolio-styles.css">
-    <link rel="stylesheet" href="/assets/port-index-styles.css">
 
     <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
@@ -18,15 +17,7 @@
             <ul>
                 <li><a href="/index.html">Home</a></li>
                 <li>
-                    <a href="/about.html">About me</a>
-                </li>
-                <li>
                     <a href="/portfolio/index.html">Projects</a>
-                    <ul class="subnav">
-                        <li><a href="/portfolio/writing.html">Writing Projects</a></li>
-                        <li><a href="/portfolio/programming.html">Programming Projects</a></li>
-                        <li><a href="/portfolio/personal.html">Personal Projects</a></li>
-                    </ul>
                 </li>
                 <li>
                     <a href="/resume.html">Resume</a>
@@ -65,55 +56,279 @@
 
     </div>
 
-    <div class="spacing"></div>
+    <div class="spacing" id="to-projects"></div>
 
-    <article id="portfolio-content" class="grid-content">
-        <section class="column">
-            <h2>Programming Projects</h2>
-            <div>
-                <p>Explore my programming projects to view how my skills and experience have changed through this year of learning web development. The earlier projects are only HTML and CSS, before I knew much JavaScript.</p>
-                <a href="/portfolio/programming.html">Read more</a>
-            </div>
-            <div>
-                <img src="/images/programming.jpg" alt="">
-            </div>
-        </section>
+    <article id="portfolio-content">
 
-        <section class="column">
-            <h2>Writing Projects</h2>
-            <div>
-                <p>A few writing projects done in my English class that show my ability to write and communicate effectively. The projects shown are a research essay on a future career I am interested in and a practice cover letter writing.</p>
-                <a href="/portfolio/writing.html">Read more</a>
+        <article id="riscv-cpu">
+            <div class="project-hero">
+                <div class="project-title">
+                    <h2>Pipelined RISC-V CPU</h2>
+                    <p>Spring 2026 &middot; Logisim, RISC-V ISA, Digital Logic</p>
+                </div>
             </div>
-            <div>
-                <img src="/images/typing.jpg" alt="">
-            </div>
-        </section>
 
-        
-        <section class="column">
-            <h2>Personal Projects</h2>
-            <div>
-                <p>When learning a new programming language I begin a personal project to something I enjoy to keep me engaged and motivated to continue learning. These projects show what I created when I was just starting out on a new language.</p>
-                <a href="/portfolio/personal.html">Read more</a>
+            <div class="grid-content">
+                <div class="half-split full-split">
+                    <p>I built a multi-stage pipelined CPU in Logisim that runs RISC-V instructions. I designed the ALU, register file, branch comparator, and datapath as separate pieces, then put them together into a working pipeline. Most of the real work lived in the seams between those pieces: I traced timing and hazard issues between pipeline stages and worked through them until the datapath stayed correct on every instruction, not just the easy ones. Building a processor from the gate level up changed how I read code, because I can now picture what the hardware is actually doing underneath an instruction instead of treating it as a black box.</p>
+                    <!-- TODO: add a screenshot of the Logisim datapath to /images and a matching .half-split image column here -->
+                </div>
             </div>
-            <div>
-                <img src="/images/programming-2.jpg" alt="">
+        </article>
+
+        <div class="hill-spacing">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" class="shape-fill"></path>
+                <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" class="shape-fill"></path>
+                <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" class="shape-fill"></path>
+            </svg>
+        </div>
+
+        <article id="guitar-amp">
+            <div class="project-hero">
+                <div class="project-title">
+                    <h2>Guitar Amplifier and Effects Chain</h2>
+                    <p>Fall 2025 &middot; Analog Circuit Design, Op-Amps, Lab Instrumentation</p>
+                </div>
             </div>
-        </section>
+
+            <div class="grid-content">
+                <div class="half-split full-split">
+                    <p>I built a full analog signal chain that takes a guitar all the way to a speaker, testing and fixing each stage on the bench along the way. The chain includes the volume and tone controls, a treble boost pedal, and a power amp, all built around op-amps. When a stage was not behaving the way I expected, I used KVL/KCL and filter design to work out on paper what had to be wrong, then confirmed it with lab equipment before changing anything. Hearing a circuit I designed come through a speaker was the clearest proof I have had that the theory and the bench actually line up.</p>
+                    <!-- TODO: add a photo of the amp build to /images and a matching .half-split image column here -->
+                </div>
+            </div>
+        </article>
+
+        <div class="hill-spacing">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" class="shape-fill"></path>
+                <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" class="shape-fill"></path>
+                <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" class="shape-fill"></path>
+            </svg>
+        </div>
+
+        <article id="myshake">
+            <div class="project-hero">
+                <div class="project-title">
+                    <h2>MyShake Earthquake Early Warning</h2>
+                    <p>January 2025 &ndash; Present &middot; Swift, SwiftUI, MapKit &middot; UC Berkeley Seismology Lab</p>
+                </div>
+            </div>
+
+            <div class="grid-content">
+                <div class="half-split full-split">
+                    <p>I build features in Swift and SwiftUI for MyShake, the UC Berkeley Seismology Lab's production earthquake early warning app. I built the map view in MapKit that shows live USGS earthquakes with shaking-intensity overlays, and I set up earthquake alerts using Apple's push notification service: a silent push wakes the app, the app pulls the event from the API, and it decides whether to alert based on the user's saved location. I also tracked down a map performance problem where the app was recalculating the whole viewport up to 240 times per pan; adding debouncing cut that down to once per pan and dropped the update frequency from 60&ndash;120 Hz to 10 Hz. Working on an app that people rely on during an emergency has made me much more careful about what I put on the main thread.</p>
+                    <!-- TODO: add an app screenshot to /images and a matching .half-split image column here -->
+                </div>
+            </div>
+        </article>
+
+        <div class="hill-spacing">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" class="shape-fill"></path>
+                <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" class="shape-fill"></path>
+                <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" class="shape-fill"></path>
+            </svg>
+        </div>
+
+        <article id="codify-site">
+            <div class="project-hero">
+                <div class="project-title">
+                    <h2>Codify Website Redesign</h2>
+                    <p>Fall 2026 &ndash; Present &middot; Project Lead &middot; Codify at UC Berkeley</p>
+                </div>
+            </div>
+
+            <div class="grid-content">
+                <div class="half-split full-split">
+                    <p>I am leading the redesign of Codify's club website with full artistic freedom over the direction it takes. I have been a member since Fall 2024, starting in the club's education program and then working as a developer on MyShake, so leading this redesign is a chance to give back to the group that got me started. The role covers both halves of the work: deciding what the site should look and feel like, then breaking that vision into pieces other members can pick up and build.</p>
+                    <!-- TODO: add a design mockup to /images and a matching .half-split image column here -->
+                </div>
+            </div>
+        </article>
+
+        <div class="hill-spacing">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" class="shape-fill"></path>
+                <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" class="shape-fill"></path>
+                <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" class="shape-fill"></path>
+            </svg>
+        </div>
+
+        <article id="digital-game"> 
+            <div class="project-hero">
+                <div class="project-title">
+                    <h2>Digital Board Game</h2>
+                    <p>2023 &middot; JavaScript, HTML, CSS &middot; Two-person project</p>
+                </div>
+            </div>
+
+            <div class="grid-content">
+                <div class="half-split">
+                    <p>This project was made between two people, my friend and I, to create a digital web based version of the board game Splendor. Splendor is a 2-4 player game where each player takes a turn collecting gems from five different colors to buy cards to earn more gems and points. We chose to recreate Splendor because it is a board game that we both enjoyed. This was a great project for developing skills on JavaScript objects and classes as they were heavily used for the creation of the game. As a learning experience the project game with its challenges related to GitHub merges that we overcame with persistence and communication between the two of us. During the development of this project we faced many merging issues that we took the time to investigate and clear before merging our individual progress together.</p>
+                    <div class="links">
+                        <a target="_blank" rel="noopener noreferrer" href="https://splending.netlify.app/">Live Project</a>
+                        <a target="_blank" rel="noopener noreferrer" href="https://github.com/Michael-B7/Splending">GitHub Repository</a>
+                    </div>
+                </div>
+                <div class="half-split">
+                    <img src="/images/splendorhome.PNG" alt="">
+                </div>
+            </div>
+        </article>
+
+        <div class="hill-spacing">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" class="shape-fill"></path>
+                <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" class="shape-fill"></path>
+                <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" class="shape-fill"></path>
+            </svg>
+        </div>
+
+        <article id="budget-calc"> 
+            <div class="project-hero">
+                <div class="project-title">
+                    <h2>Budget Calculator</h2>
+                    <p>2023 &middot; JavaScript, HTML, CSS</p>
+                </div>
+            </div>
+            <div class="grid-content">
+                <div class="half-split">
+                    <p>The EECU Calculator was created to put new JavaScript skills into practice in the form of a budgeting calculator. The list of jobs and incomes were provided by the credit union EECU. The website is a digital version of an EECU pamphlet used for teaching monthly deductions from a paycheck and how to balance a checkbook. The challenges faced were due to my inexperience in JavaScript at the time but were quickly resolved as worked through the project. I persevered through learning JavaScript to create a final product that I was successful in creating.</p>
+                    <div class="links">
+                        <a target="_blank" rel="noopener noreferrer" href="https://eecu-budgeting.netlify.app/">Live Project</a>
+                        <a target="_blank" rel="noopener noreferrer" href="https://github.com/EmilianoCee/eecu-calculator">GitHub Repository</a>
+                    </div>
+                </div>
+                <div class="half-split">
+                    <img src="/images/eecu.PNG" alt="">
+                </div>
+            </div>
+        </article>
+
+        <div class="hill-spacing">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" class="shape-fill"></path>
+                <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" class="shape-fill"></path>
+                <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" class="shape-fill"></path>
+            </svg>
+        </div>
+
+        <article id="info-web">
+            <div class="project-hero">
+                <div class="project-title">
+                    <h2>Informational Website</h2>
+                    <p>2022 &middot; HTML, CSS, Figma &middot; Rotating-partner collaboration</p>
+                </div>
+            </div>
+            <div class="grid-content">
+                <div class="half-split">
+                    <p>This informational website was created with the goal to spread awareness about social engineering attacks and to help people understand how to stay protected against them. The twist with the project was that I was not able to code any of it myself. During the project every person would get a new partner every 30 minutes to work with. In those 30 minutes you would either work for someone else or have someone else work for you. This project greatly improved my collaboration and communication skills as I had to be clear in my directions for my partner to understand what I wanted to be done. My planning was a great help to the success of my communication, before any work with other people I made a clear design using Figma to help with giving my partner an idea of how I wanted the final product to look.</p>
+                    <div class="links">
+                        <a target="_blank" rel="noopener noreferrer" href="https://social-engineering.netlify.app/">Live Project</a>
+                        <a target="_blank" rel="noopener noreferrer" href="https://github.com/EmilianoCee/Project-2">GitHub Repository</a>
+                    </div>
+                </div>
+                <div class="half-split">
+                    <img src="/images/social-engineering.PNG" alt="">
+                </div>
+            </div>
+        </article>
+
+        <div class="hill-spacing">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" class="shape-fill"></path>
+                <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" class="shape-fill"></path>
+                <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" class="shape-fill"></path>
+            </svg>
+        </div>
+
+        <article id="jack-of-all-champs">
+            <div class="project-hero">
+                <div class="project-title">
+                    <h2>Jack of All Champs</h2>
+                    <p>Personal Project &middot; JavaScript, HTML, CSS</p>
+                </div>
+            </div>
+            <div class="grid-content">
+                <div class="half-split">
+                    <p>At the start of my programming journey I decided to combine my interest in video games with programming to apply my skills to something I enjoyed. In order to learn JavaScript I created a website to track my progress in a League of Legends that involves winning a game with every playable character. It has an image of every character that could be toggled to show which have been completed, there are also ways to sort through the characters to make things easier to find. This website is a tool that helped organize and track my progress while applying my new knowledge with JavaScript. It was a great experience creating something that my friends and I all used when it was completed. I chose to share this project because it shows my passion and applications for programming what I enjoy and what could help others. As this project was my first step into JavaScript, displaying it also shows my growth in programming.</p>
+                    <div class="links">
+                        <a target="_blank" rel="noopener noreferrer" href="https://jack-of-all-champs.netlify.app/">Live Project</a>
+                        <a target="_blank" rel="noopener noreferrer" href="https://github.com/EmilianoCee/jack-of-all-champs-lol">GitHub Repository</a>
+                    </div>
+                </div>
+                <div class="half-split">
+                    <img src="/images/league.PNG" alt="">
+                </div>
+            </div>
+        </article>
+
+        <div class="hill-spacing">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" class="shape-fill"></path>
+                <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" class="shape-fill"></path>
+                <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" class="shape-fill"></path>
+            </svg>
+        </div>
+
+        <article id="wave-calc"> 
+            <div class="project-hero">
+                <div class="project-title">
+                    <h2>Wave Conversion Calculator</h2>
+                    <p>Personal Project &middot; TI-BASIC</p>
+                </div>
+            </div>
+            <div class="grid-content">
+                <div class="half-split">
+                    <p>Using my TI calculator I created a program to convert between wave frequency, wavelength, and energy using TI-BASIC. In my physics class there was a lot of work that required conversion between different wave measurements. It was a simple concept but it began to become repetitive to switch between measurements. With my interest in programming I decided to create a program on my calculator to convert the measurements for me. I am showing this project because it shows my ability to program to improve efficiency in my work. </p>
+                    <div class="links">
+                        <a target="_blank" rel="noopener noreferrer" href="https://github.com/EmilianoCee/waves/blob/main/waves.8xp">GitHub Repository</a>
+                    </div>
+                </div>
+                <div class="half-split double-image">
+                    <img src="/images/personal-1.png" alt="">
+                    <img src="/images/personal-2.png" alt="">
+                </div>
+            </div>
+        </article>
+
+        <div class="hill-spacing">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" class="shape-fill"></path>
+                <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" class="shape-fill"></path>
+                <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" class="shape-fill"></path>
+            </svg>
+        </div>
+
+        <article id="layout-practice"> 
+            <div class="project-hero">
+                <div class="project-title">
+                    <h2>Layout Practice</h2>
+                    <p>2022 &middot; HTML, CSS, Responsive Design</p>
+                </div>
+            </div>
+            <div class="grid-content">
+                <div class="half-split">
+                    <p>This layout practice project is a sample project showcasing the ability to create a responsive website layout using CSS and following the needs of an employer. During the process of the project I learned how to better use media queries to create a responsive layout across all screen sizes. A challenge faced was making sure that the layout remained consistent when resizing for screens. Creating this website showed investigation skills in creating a near replica of the given image. The skills learned about responsive design are important for the field of web development.</p>
+                    <div class="links">
+                        <a target="_blank" rel="noopener noreferrer" href="https://layout-practice-cart.netlify.app/">Live Project</a>                    </div>
+                </div>
+                <div class="half-split">
+                    <img src="/images/layout-practice.PNG" alt="">
+                </div>
+            </div>
+        </article>
 
     </article>
 
     <footer>
         <div class="footer-content">
-            <p>© 2023 Emiliano Cereceres. All rights reserved.</p>
+            <p>&copy; 2023 Emiliano Cereceres. All rights reserved.</p>
             <ul class="footer-nav">
                 <li><a href="/index.html">Home</a></li>
-                <li><a href="/about.html">About</a></li>
                 <li><a href="/portfolio/index.html">Projects</a></li>
-                <li><a href="/portfolio/writing.html">Writing Projects</a></li>
-                <li><a href="/portfolio/programming.html">Programming Projects</a></li>
-                <li><a href="/portfolio/personal.html">Personal Projects</a></li>
                 <li><a href="/resume.html">Resume</a></li>
                 <li><a href="/contact.html">Contact</a></li>
             </ul>

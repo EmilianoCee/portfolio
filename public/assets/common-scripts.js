@@ -1,5 +1,8 @@
 function navPosition() {
-    document.querySelector(`.subnav`).style.top = document.querySelector(`.hero-nav ul`).offsetHeight + "px";
+    const subnav = document.querySelector(`.subnav`);
+    if (!subnav) return;
+
+    subnav.style.top = document.querySelector(`.hero-nav ul`).offsetHeight + "px";
 }
 
 document.addEventListener('DOMContentLoaded', navPosition);
